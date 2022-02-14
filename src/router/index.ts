@@ -1,16 +1,36 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import tdkMethod from './tdk'
+
+const componentPage = {
+	home: () => import('@/views/Home.vue'),
+	about: () => import('@/views/About.vue'),
+	test: () => import('@/views/test.vue')
+}
 
 const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/',
 		name: 'Home',
-		component: Home
+		meta: {
+			title: 'Home'
+		},
+		component: componentPage.home
 	},
 	{
 		path: '/about',
 		name: 'About',
-		component: () => import('../views/About.vue')
+		meta: {
+			title: 'About'
+		},
+		component: componentPage.about
+	},
+	{
+		path: '/test',
+		name: 'Test',
+		meta: {
+			title: 'Test'
+		},
+		component: componentPage.test
 	}
 ]
 
@@ -18,5 +38,9 @@ const router = createRouter({
 	history: createWebHashHistory(),
 	routes
 })
-
+// tdk
+router.beforeEach((to, from, next) => {
+	console.log('router.beforeEach---------')
+	tdkMethod(to, from, next)
+})
 export default router
