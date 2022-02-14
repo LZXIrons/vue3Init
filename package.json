@@ -11,7 +11,8 @@
     "build:ppe": "vue-tsc --noEmit && vite build --mode ppe",
     "build:prod": "vue-tsc --noEmit && vite build --mode production",
     "serve": "vite preview",
-    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore . --fix"
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore . --fix",
+    "lint:css": "stylelint **/*.{html,vue,css,sass,scss,less}"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
@@ -44,6 +45,12 @@
     "postcss-px2rem": "^0.3.0",
     "prettier": "^2.4.0",
     "sass": "^1.41.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^2.5.0",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.21.0",
     "typescript": "^4.3.2",
     "vite": "^2.5.4",
     "vite-plugin-cdn-import": "^0.3.5",
@@ -61,6 +68,9 @@
     }
   },
   "lint-staged": {
+    "*.{html,vue,css,sass,scss}": [
+      "stylelint --fix"
+    ],
     "**/*.{js,vue}": [
       "prettier --write",
       "eslint --fix",
