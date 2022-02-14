@@ -40,10 +40,15 @@ p {
 	}
 	&.title {
 		font-size: $font-size-titles;
+
 		@include userselect($page-user-select);
 	}
 }
 button {
 	@include box-shadow;
+
+	font-size: 12rpx;
+	color: #f00;
+	border: 0;
 }
 </style>
