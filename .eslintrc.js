@@ -13,12 +13,31 @@ module.exports = {
 	],
 	plugins: ['prettier'],
 	parserOptions: {
-		ecmaVersion: 2017
+		ecmaVersion: 2020
 	},
 	rules: {
+		'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+		'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 		'prettier/prettier': 'error',
 		'arrow-body-style': 'off',
-		'prefer-arrow-callback': 'off'
+		'prefer-arrow-callback': 'off',
+		'vue/script-setup-uses-vars': 'error',
+		'@typescript-eslint/no-explicit-any': ['off'],
+		'@typescript-eslint/explicit-module-boundary-types': 'off',
+		'@typescript-eslint/no-var-requires': 0,
+		'@typescript-eslint/member-delimiter-style': [
+			'error',
+			{
+				multiline: {
+					delimiter: 'none', // 'none' or 'semi' or 'comma'
+					requireLast: true
+				},
+				singleline: {
+					delimiter: 'semi', // 'semi' or 'comma'
+					requireLast: false
+				}
+			}
+		]
 	},
 	overrides: [
 		{

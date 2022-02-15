@@ -3,10 +3,11 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
 defineProps({ msg: String })
+
 onMounted(() => {
-	axios.get(import.meta.env.VITE_INTERFACE_ORIGIN + 'osinfo/all').then(res => {
-		console.log(res.data)
-	})
+	// axios.get(import.meta.env.VITE_INTERFACE_ORIGIN + 'osinfo/all').then(res => {
+	// 	console.log(res.data)
+	// })
 })
 const count = ref(0)
 </script>
