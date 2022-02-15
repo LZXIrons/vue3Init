@@ -1,6 +1,6 @@
 // export enum TYPE {
-// 	defaultOrigin = process.env.VUE_APP_IMAGE_ORIGIN,
-// 	staticOrigin = process.env.VUE_APP_STATIC_ORIGIN
+//   defaultOrigin = process.env.VUE_APP_IMAGE_ORIGIN,
+//   staticOrigin = process.env.VUE_APP_STATIC_ORIGIN
 // }
 
 export enum CERTIFICATEE {

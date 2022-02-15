@@ -36,6 +36,9 @@
 		<br />
 		<button @click="handleTitle">点击改变标题</button>
 		<popup v-model:isShow="isShow"></popup>
+		<div v-for="(item, index) in imgListData" :key="index">
+			<img :src="item" alt="" />
+		</div>
 	</div>
 </template>
 
@@ -55,6 +58,9 @@ import {
 } from 'vue'
 
 Toast('提示内容')
+const imgListData: Array<string> = [...Array(5)].map(
+	(_, index) => `./assets/watch-1-/${index + 1}.png`
+)
 // const res: ImgListInterface = {
 //   name: 10
 // }

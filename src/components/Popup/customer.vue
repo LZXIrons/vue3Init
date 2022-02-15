@@ -68,11 +68,11 @@ export default defineComponent({
 	width: 335px;
 	padding: 0 0 16px 0;
 	.title {
+		padding: 24px 0 20px 0;
 		font-size: 19px;
 		font-weight: 500;
-		color: #333333;
 		line-height: 26px;
-		padding: 24px 0 20px 0;
+		color: #333;
 		text-align: center;
 	}
 	.img {
@@ -81,33 +81,33 @@ export default defineComponent({
 	}
 	.phone {
 		display: flex;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
 		margin: 6px 0 0 0;
 		.text {
 			font-size: 15px;
 			font-weight: 400;
-			color: #333333;
+			color: #333;
 		}
 		.copy {
 			display: flex;
-			justify-content: center;
 			align-items: center;
-			background: #f2f2f2;
-			border-radius: 12px;
-			margin: 0 0 0 8px;
+			justify-content: center;
 			width: 55px;
 			height: 24px;
-			color: #0078ff;
+			margin: 0 0 0 8px;
 			font-size: 13px;
+			color: #0078ff;
+			background: #f2f2f2;
+			border-radius: 12px;
 		}
 	}
 	.desc {
+		padding: 8px 0 0 0;
 		font-size: 13px;
 		font-weight: 400;
-		color: #666666;
 		line-height: 18px;
-		padding: 8px 0 0 0;
+		color: #666;
 		text-align: center;
 	}
 	.desc2 {

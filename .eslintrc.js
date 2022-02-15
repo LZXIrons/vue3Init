@@ -23,6 +23,7 @@ module.exports = {
 		'prefer-arrow-callback': 'off',
 		'vue/script-setup-uses-vars': 'error',
 		'@typescript-eslint/no-explicit-any': ['off'],
+		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/no-var-requires': 0,
 		'@typescript-eslint/member-delimiter-style': [
