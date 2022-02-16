@@ -1,5 +1,16 @@
 {
 	"compilerOptions": {
+    // "noLib": false,
+    // "forceConsistentCasingInFileNames": true,
+    // "strictFunctionTypes": false,
+    // "allowJs": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "experimentalDecorators": true,
+    // "types": ["vite/client"],
+    // "removeComments": true,
+
+		
 		"skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
 		"target": "esnext",

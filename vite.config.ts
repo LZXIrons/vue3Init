@@ -1,4 +1,4 @@
-import { defineConfig, ConfigEnv } from 'vite'
+import { defineConfig, ConfigEnv, loadEnv } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
 import WindiCSS from 'vite-plugin-windicss'
 import vue from '@vitejs/plugin-vue'
@@ -6,18 +6,30 @@ import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
 // 路径处理模块
 import path from 'path'
 // https://vitejs.dev/config/
-export default defineConfig(({ command }: ConfigEnv) => {
+export default defineConfig(({ command, mode }: ConfigEnv) => {
+	const env = loadEnv(mode, __dirname)
 	return {
 		server: {
 			host: '0.0.0.0',
 			open: true, // 是否打开浏览器
 			port: 3000,
 			proxy: {
-				// '^/interface/': {
-				// 	target: 'http://192.168.24.99:3000/',
-				// 	changeOrigin: true,
-				// 	rewrite: path => path.replace(/^\/interface/, '')
-				// }
+				'/zhongzhengapi/rigPortal/': {
+					target: env.VITE_APP_RIG_API,
+					changeOrigin: true,
+					rewrite: path =>
+						path.replace(/^\/zhongzhengapi\/rigPortal\//, '/rigPortal/')
+				},
+				'/zhongzhengapi/manageapi/': {
+					target: env.VITE_APP_MANAGE_API,
+					changeOrigin: true,
+					rewrite: path => path.replace(/^\/zhongzhengapi\/manageapi\//, '')
+				},
+				'^/api': {
+					target: env.VITE_APP_TEST,
+					changeOrigin: true,
+					rewrite: path => path.replace(/^\/api/, '')
+				}
 			}
 		},
 		plugins: [
@@ -115,6 +127,7 @@ export default defineConfig(({ command }: ConfigEnv) => {
 				}
 			}
 		},
+		define: { 'process.env': {} },
 		// 引入第三方配置
 		optimizeDeps: {
 			include: []

@@ -21,6 +21,7 @@
 		"vant": "^3.3.7",
     "axios": "^0.22.0",
     "lib-flexible": "^0.3.2",
+    "vue-clipboard3": "^1.0.1",
     "vue": "^3.2.6",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2"
@@ -69,9 +70,6 @@
     }
   },
   "lint-staged": {
-		"**/*.{html,vue,css,sass,scss}": [
-      "stylelint --fix"
-    ],
     "**/*.{js,vue}": [
       "prettier --write",
       "eslint --fix",

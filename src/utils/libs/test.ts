@@ -9,7 +9,7 @@ import type { RequestOptions } from '@/type/axios'
 import { Toast } from 'vant'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'
-const API_BASE_URL = process.env.VUE_APP_RIG_API
+const API_BASE_URL = import.meta.env.VITE_APP_RIG_API
 const axiosInstance = axios.create({
 	// baseURL: 'https://easy-mock.com', //api基本路径
 	baseURL: API_BASE_URL,
@@ -95,7 +95,7 @@ const $http = async (options: RequestOptions) => {
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-const $get = (params: Record<string, unknown>, url: string, isLoad = true) => {
+const $get = (url: string, params?: Record<string, unknown>, isLoad = true) => {
 	return $http({
 		params,
 		url,
@@ -109,7 +109,11 @@ const $get = (params: Record<string, unknown>, url: string, isLoad = true) => {
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-const $post = (params: Record<string, unknown>, url: string, isLoad = true) => {
+const $post = (
+	url: string,
+	params?: Record<string, unknown>,
+	isLoad = true
+) => {
 	return $http({
 		params,
 		url,
@@ -127,8 +131,8 @@ const $all = (params: Record<string, unknown>, url: string) => {
 		])
 		.then(
 			axios.spread(function (user, orgs) {
-				console.log('接口1数据:', user.data.avatar_url, user.data.name)
-				console.log('接口2数据:', orgs.data)
+				// console.log('接口1数据:', user.data.avatar_url, user.data.name)
+				// console.log('接口2数据:', orgs.data)
 			})
 		)
 }
@@ -172,10 +176,4 @@ const $requestCancel = (params: Record<string, unknown>, url: string) => {
 	// cancel the request
 	cancel('取消请求')
 }
-module.exports = {
-	$post,
-	$get,
-	$all,
-	$catchError,
-	$requestCancel
-}
+export { $post, $get, $all, $catchError, $requestCancel }
