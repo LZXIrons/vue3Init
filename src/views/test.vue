@@ -34,17 +34,19 @@
 		<br />
 		<br />
 		<br />
-		<button @click="handleTitle">点击改变标题</button>
-		<popup v-model:isShow="isShow"></popup>
+		<button class="red" @click="handleTitle">点击改变标题</button>
+		<!-- <popup @close="closeHandle"></popup> -->
+		<popup v-model:isShow="isShow" @close="closeHandle"></popup>
 		<div v-for="(item, index) in imgListData" :key="index">
 			<img :src="item" alt="" />
 		</div>
+		<a-button type="primary"> Primary </a-button>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import popup from '@/components/Popup/demo.vue'
-import { testApi, findDetail } from '@/api/test'
+// import { findDetail } from '@/api/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
 import {
@@ -55,12 +57,28 @@ import {
 	watch,
 	onMounted,
 	onUpdated,
-	inject
+	provide
 } from 'vue'
 
+onMounted(() => {
+	console.log('-------------onMounted', title.value)
+})
+onUpdated(() => {
+	console.log('-------------onUpdated')
+})
+provide('location', {
+	address: '广州'
+})
+
 Toast('提示内容')
-const imgListData: Array<string> = [...Array(5)].map(
-	(_, index) => `./assets/watch-1-/${index + 1}.png`
+
+const closeHandle = () => console.log('close')
+// const theme = {
+// 	color: 'red'
+// }
+
+const imgListData = [...Array(4)].map(
+	(_, index) => `/assets/watch-1-${index}.png`
 )
 // const res: ImgListInterface = {
 //   name: 10
@@ -68,12 +86,12 @@ const imgListData: Array<string> = [...Array(5)].map(
 // const test: ResData<number> = {
 //   name: 10
 // }
-const res = await findDetail({
-	query: {
-		id: 10367
-	}
-})
-console.log('res', res)
+// const res = await findDetail({
+// 	query: {
+// 		id: 10367
+// 	}
+// })
+// console.log('res', res)
 const copyDefineClass = new DefineClass<number>('张三', 10)
 const copyNewDefineClass = new NewDefineClass('李四', 20)
 const test1 = new TestClass('李四')
@@ -124,17 +142,13 @@ watchEffect(() => {
 watch(userInfo as any, (newName, oldName) => {
 	console.log('watch监听变量', newName, oldName)
 })
+// const theme = {
+// 	color: 'red'
+// }
 // inject
-const provideTitle: any = inject('provideTitle')
-console.log('---------provideTitle', provideTitle)
+// const provideTitle: any = inject('provideTitle')
+// console.log('---------provideTitle', provideTitle)
 
-// onMounted
-onMounted(() => {
-	console.log('-------------onMounted', title.value)
-})
-onUpdated(() => {
-	console.log('-------------onUpdated')
-})
 // return {
 //   obj,
 //   userInfo,
@@ -168,5 +182,8 @@ input {
 img {
 	width: 100%;
 	height: 200px;
+}
+:global(.red) {
+	color: red;
 }
 </style>

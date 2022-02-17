@@ -9,7 +9,7 @@ import type { RequestOptions } from '@/type/axios'
 import { Toast } from 'vant'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'
-const API_BASE_URL = import.meta.env.VITE_APP_RIG_API
+const API_BASE_URL = ''
 const axiosInstance = axios.create({
 	// baseURL: 'https://easy-mock.com', //api基本路径
 	baseURL: API_BASE_URL,

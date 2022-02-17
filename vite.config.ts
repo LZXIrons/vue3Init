@@ -1,4 +1,10 @@
 import { defineConfig, ConfigEnv, loadEnv } from 'vite'
+import Components from 'unplugin-vue-components/vite'
+import {
+	AntDesignVueResolver,
+	VantResolver
+} from 'unplugin-vue-components/resolvers'
+
 import { viteMockServe } from 'vite-plugin-mock'
 import WindiCSS from 'vite-plugin-windicss'
 import vue from '@vitejs/plugin-vue'
@@ -8,6 +14,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
 	const env = loadEnv(mode, __dirname)
+	console.log('env.VITE_APP_RIG_API', env.VITE_APP_RIG_API)
 	return {
 		server: {
 			host: '0.0.0.0',
@@ -39,6 +46,9 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				mockPath: 'mock',
 				localEnabled: command === 'serve',
 				watchFiles: true
+			}),
+			Components({
+				resolvers: [AntDesignVueResolver(), VantResolver()]
 			}),
 			WindiCSS(),
 			importToCDN({

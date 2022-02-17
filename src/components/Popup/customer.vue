@@ -56,7 +56,7 @@ export default defineComponent({
 			}
 		}
 		return {
-			static: process.env.VUE_APP_STATIC_ORIGIN,
+			static: import.meta.env.VUE_APP_STATIC_ORIGIN,
 			handleCopy
 		}
 	}

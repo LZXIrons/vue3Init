@@ -10,6 +10,12 @@ module.exports = {
 		'declaration-colon-space-before': 'never',
 		'declaration-colon-space-after': 'always-single-line',
 		'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }],
+		'selector-pseudo-class-no-unknown': [
+			true,
+			{
+				ignorePseudoClasses: ['global']
+			}
+		],
 		'at-rule-no-unknown': [
 			true,
 			{

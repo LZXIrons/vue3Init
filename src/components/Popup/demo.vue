@@ -1,53 +1,98 @@
+import { ref } from 'vue';
 <template>
 	<div :class="{ show: isShow }">
-		<div class="overlay" @click="$emit('update:isShow', false)"></div>
-		<div class="popup brand-list">
+		<div class="overlay" @click="handleShow"></div>
+		<div class="popup brand-list red">
+			{{ parentData.address }}
+			{{ title }}
 			111111
-			<wb-brand-list
-				:data="data"
-				:cover="cover"
-				:active="active"
-				@click.stop="$emit('click', $event)"
-			/>
+			<!-- <wb-brand-list :data="data" :cover="cover" :active="active" /> -->
 		</div>
 	</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-	// model: {
-	//   prop: 'modelValue',
-	//   event: 'update:modelValue'
-	// },
-	props: {
-		isShow: {
-			type: Boolean,
-			default: false
-		},
-		data: {
-			type: Array,
-			default: () => []
-		},
-		active: {
-			type: [Object, String],
-			default: () => ({})
-		},
-		cover: {
-			type: Boolean,
-			default: false
-		}
+<script lang="ts" setup>
+import { ref, inject } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+interface FD {
+	address: string
+}
+const props = defineProps({
+	isShow: {
+		type: Boolean,
+		default: false
 	},
-	setup(props, context) {
-		const handleShow = () => {
-			console.log('关闭')
-			context.emit('update:isShow', false)
-		}
-		return {
-			handleShow
-		}
+	data: {
+		type: Array,
+		default: () => []
+	},
+	active: {
+		type: [Object, String],
+		default: () => ({})
+	},
+	cover: {
+		type: Boolean,
+		default: false
 	}
 })
+const a = 1
+const b = ref(2)
+
+defineExpose({
+	a,
+	b
+})
+const $emit = defineEmits(['close', 'update:isShow'])
+const router = useRouter()
+const route = useRoute()
+debugger
+const title = ref(route.meta.title)
+const parentData = inject('location') as FD
+const handleShow = () => {
+	console.log('关闭')
+	$emit('close', false)
+	$emit('update:isShow', false)
+	router.push({
+		path: '/about',
+		query: {
+			title
+		}
+	})
+}
+
+// export default defineComponent({
+// 	// model: {
+// 	//   prop: 'modelValue',
+// 	//   event: 'update:modelValue'
+// 	// },
+// 	props: {
+// 		isShow: {
+// 			type: Boolean,
+// 			default: false
+// 		},
+// 		data: {
+// 			type: Array,
+// 			default: () => []
+// 		},
+// 		active: {
+// 			type: [Object, String],
+// 			default: () => ({})
+// 		},
+// 		cover: {
+// 			type: Boolean,
+// 			default: false
+// 		}
+// 	},
+// 	setup(props, context) {
+// 		const handleShow = () => {
+// 			console.log('关闭')
+// 			context.emit('update:isShow', false)
+// 		}
+// 		return {
+// 			handleShow
+// 		}
+// 	}
+// })
 </script>
 
 <style lang="scss" scoped>
