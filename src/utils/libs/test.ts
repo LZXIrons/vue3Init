@@ -16,7 +16,7 @@ const axiosInstance = axios.create({
 	timeout: 10000, // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 	headers: {
 		// `headers` 是即将被发送的自定义请求头
-		'Content-Type': 'application/json'
+		'Content-Type': 'application/x-www-form-urlencoded'
 	}
 })
 

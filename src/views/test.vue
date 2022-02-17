@@ -44,7 +44,7 @@
 
 <script lang="ts" setup>
 import popup from '@/components/Popup/demo.vue'
-import { testApi } from '@/api/test'
+import { testApi, findDetail } from '@/api/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
 import {
@@ -68,9 +68,12 @@ const imgListData: Array<string> = [...Array(5)].map(
 // const test: ResData<number> = {
 //   name: 10
 // }
-console.log(process.env.VUE_APP_RIG_API)
-const res = await testApi()
-console.log(res)
+const res = await findDetail({
+	query: {
+		id: 10367
+	}
+})
+console.log('res', res)
 const copyDefineClass = new DefineClass<number>('张三', 10)
 const copyNewDefineClass = new NewDefineClass('李四', 20)
 const test1 = new TestClass('李四')
