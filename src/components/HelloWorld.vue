@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import { onMounted } from 'vue'
+import { testStore } from '@/store/pinia'
+const Store = testStore()
+const add = () => {
+	Store.addTest()
+}
 
 defineProps({ msg: String })
 
@@ -9,7 +13,6 @@ onMounted(() => {
 	// 	console.log(res.data)
 	// })
 })
-const count = ref(0)
 </script>
 
 <template>
@@ -17,7 +20,7 @@ const count = ref(0)
 	<p class="bigtxt">big txt</p>
 
 	<p>{{ msg }}</p>
-	<button type="button" @click="count++">count is: {{ count }}</button>
+	<button type="button" @click="add">count is: {{ Store.test }}</button>
 </template>
 
 <style scoped lang="scss">

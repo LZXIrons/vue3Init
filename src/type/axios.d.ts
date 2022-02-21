@@ -1,4 +1,4 @@
-export interface RequestOptions {
+declare interface RequestOptions {
 	params?: Recordable
 	url: string
 	isLoad?: boolean

@@ -1,16 +1,11 @@
 {
 	"compilerOptions": {
-    // "noLib": false,
-    // "forceConsistentCasingInFileNames": true,
-    // "strictFunctionTypes": false,
-    // "allowJs": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "experimentalDecorators": true,
-    // "types": ["vite/client"],
-    // "removeComments": true,
-
-		
+    "removeComments": true,
+		"noUnusedLocals": true,
+    "noUnusedParameters": true,
+		"allowJs": true,
+		"strictFunctionTypes": false,
+    "forceConsistentCasingInFileNames": true,
 		"skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
 		"target": "esnext",

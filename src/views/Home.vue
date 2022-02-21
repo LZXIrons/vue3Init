@@ -5,16 +5,22 @@
 </template>
 
 <script lang="ts">
+// import { mapMutations } from 'vuex'
 import { defineComponent } from 'vue'
-import { mapMutations } from 'vuex'
-
+import { useRouter } from 'vue-router'
 export default defineComponent({
-	name: 'Home',
-	methods: {
-		...mapMutations(['addTest']),
-		goabout() {
-			this.addTest()
-			this.$router.push('/about')
+	setup() {
+		const router = useRouter()
+		const goabout = () => {
+			router.push({
+				path: '/about',
+				query: {
+					title: 1
+				}
+			})
+		}
+		return {
+			goabout
 		}
 	}
 })

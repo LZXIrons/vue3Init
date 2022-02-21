@@ -17,7 +17,7 @@ import { useRoute, useRouter } from 'vue-router'
 interface FD {
 	address: string
 }
-const props = defineProps({
+defineProps({
 	isShow: {
 		type: Boolean,
 		default: false
@@ -45,11 +45,9 @@ defineExpose({
 const $emit = defineEmits(['close', 'update:isShow'])
 const router = useRouter()
 const route = useRoute()
-debugger
-const title = ref(route.meta.title)
+const title = ref<any>(route.meta.title)
 const parentData = inject('location') as FD
 const handleShow = () => {
-	console.log('关闭')
 	$emit('close', false)
 	$emit('update:isShow', false)
 	router.push({

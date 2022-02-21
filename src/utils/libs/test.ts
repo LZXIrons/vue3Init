@@ -5,7 +5,7 @@
 // axios.defaults.adapter = mpAdapter
 
 import axios, { AxiosRequestConfig } from 'axios'
-import type { RequestOptions } from '@/type/axios'
+// import type { RequestOptions } from '@/type/axios'
 import { Toast } from 'vant'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'

@@ -22,6 +22,7 @@ module.exports = {
 		'arrow-body-style': 'off',
 		'prefer-arrow-callback': 'off',
 		'vue/script-setup-uses-vars': 'error',
+		'vue/multi-word-component-names': 'off',
 		'@typescript-eslint/no-explicit-any': ['off'],
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
