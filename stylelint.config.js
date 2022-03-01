@@ -1,5 +1,6 @@
 module.exports = {
 	root: true,
+	defaultSeverity: 'error',
 	plugins: ['stylelint-order'],
 	extends: [
 		'stylelint-config-standard',
