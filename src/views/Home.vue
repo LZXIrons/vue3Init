@@ -11,11 +11,12 @@ import { useRouter } from 'vue-router'
 export default defineComponent({
 	setup() {
 		const router = useRouter()
+		const title = '哈哈哈'
 		const goabout = () => {
 			router.push({
 				path: '/about',
 				query: {
-					title: 1
+					title
 				}
 			})
 		}

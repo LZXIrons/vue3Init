@@ -46,6 +46,7 @@ const $emit = defineEmits(['close', 'update:isShow'])
 const router = useRouter()
 const route = useRoute()
 const title = ref<any>(route.meta.title)
+console.log('title-----------', title.value)
 const parentData = inject('location') as FD
 const handleShow = () => {
 	$emit('close', false)
@@ -53,7 +54,7 @@ const handleShow = () => {
 	router.push({
 		path: '/about',
 		query: {
-			title
+			title: title.value
 		}
 	})
 }
