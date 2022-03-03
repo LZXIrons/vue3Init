@@ -11,6 +11,11 @@ import vue from '@vitejs/plugin-vue'
 import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
 // 路径处理模块
 import path from 'path'
+
+function resovePath(paths: string) {
+	// 如何 __dirname 找不到 需要 yarn add @types/node --save-dev
+	return path.resolve(__dirname, paths)
+}
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
 	const env = loadEnv(mode, __dirname)
@@ -90,13 +95,24 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 			// ]
 			// 定义别名
 			alias: {
-				'@': path.resolve(__dirname, 'src'),
-				'@components': path.resolve(__dirname, 'src/components')
+				'@': resovePath('src'),
+				'@components': resovePath('src/components'),
+				'@config': resovePath('src/config'),
+				'@utils': resovePath('src/utils'),
+				'@api': resovePath('src/api')
 			}
 		},
 		css: {
 			//css预处理
 			preprocessorOptions: {
+				less: {
+					// modifyVars: generateModifyVars(),
+					javascriptEnabled: true,
+					// 这样就能全局使用 src/assets/styles/base.less 定义的 变量
+					additionalData: `@import "${resovePath(
+						'src/assets/styles/base.less'
+					)}";`
+				},
 				scss: {
 					/*
 				引入var.scss全局预定义变量，

@@ -34,6 +34,7 @@
 		<br />
 		<br />
 		<br />
+		<div>{{ dialogCountDown }}</div>
 		<button class="red" @click="handleTitle">点击改变标题</button>
 		<!-- <popup @close="closeHandle"></popup> -->
 		<popup v-model:isShow="isShow" @close="closeHandle"></popup>
@@ -49,6 +50,7 @@ import popup from '@/components/Popup/demo.vue'
 // import { findDetail } from '@/api/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
+import { useCountDown } from '@vant/use'
 import {
 	ref,
 	reactive,
@@ -59,7 +61,6 @@ import {
 	onUpdated,
 	provide
 } from 'vue'
-
 onMounted(() => {
 	console.log('-------------onMounted', title.value)
 })
@@ -69,8 +70,10 @@ onUpdated(() => {
 provide('location', {
 	address: '广州'
 })
-
 Toast('提示内容')
+const dialogCountDown = useCountDown({
+	time: 10 * 1000
+})
 
 const closeHandle = () => console.log('close')
 // const theme = {
@@ -142,6 +145,7 @@ watchEffect(() => {
 watch(userInfo as any, (newName, oldName) => {
 	console.log('watch监听变量', newName, oldName)
 })
+
 // const theme = {
 // 	color: 'red'
 // }
