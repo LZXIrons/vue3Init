@@ -1,14 +1,5 @@
 import { defineConfig, ConfigEnv, loadEnv } from 'vite'
-import Components from 'unplugin-vue-components/vite'
-import {
-	AntDesignVueResolver,
-	VantResolver
-} from 'unplugin-vue-components/resolvers'
-
-import { viteMockServe } from 'vite-plugin-mock'
-import WindiCSS from 'vite-plugin-windicss'
-import vue from '@vitejs/plugin-vue'
-import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
+import { createVitePlugins } from './config/vite/plugins'
 // 路径处理模块
 import path from 'path'
 
@@ -19,6 +10,7 @@ function resovePath(paths: string) {
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
 	const env = loadEnv(mode, __dirname)
+	const isBuild = command === 'build'
 	console.log('env.VITE_APP_RIG_API', env.VITE_APP_RIG_API)
 	return {
 		server: {
@@ -44,55 +36,8 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				}
 			}
 		},
-		plugins: [
-			vue(),
-			viteMockServe({
-				supportTs: true,
-				mockPath: 'mock',
-				localEnabled: command === 'serve',
-				watchFiles: true
-			}),
-			Components({
-				resolvers: [AntDesignVueResolver(), VantResolver()]
-			}),
-			WindiCSS(),
-			importToCDN({
-				modules: [
-					autoComplete('vue'),
-					autoComplete('axios'),
-					autoComplete('lodash'),
-					{
-						name: 'vue',
-						var: 'Vue',
-						path: 'https://cdn.jsdelivr.net/npm/vue@3.0.5/dist/vue.global.prod.js'
-					},
-					{
-						name: 'vuex',
-						var: 'Vuex',
-						path: 'https://cdn.jsdelivr.net/npm/vuex@4.0.2/dist/vuex.global.prod.js'
-					},
-					{
-						name: 'ant-design-vue',
-						var: 'antd',
-						path: 'https://cdn.jsdelivr.net/npm/ant-design-vue@2.2.0-beta.6/dist/antd.js',
-						css: 'https://cdn.jsdelivr.net/npm/ant-design-vue@2.2.0-beta.6/dist/antd.min.css'
-					},
-					{
-						name: 'vue-router',
-						var: 'VueRouter',
-						path: 'https://cdn.jsdelivr.net/npm/vue-router@4.0.10/dist/vue-router.global.prod.js'
-					}
-				]
-			})
-		],
+		plugins: createVitePlugins(isBuild),
 		resolve: {
-			// alias: [
-			// 	// @/xxxx => src/xxxx
-			// 	{
-			// 		find: /@\//,
-			// 		replacement: pathResolve('src') + '/'
-			// 	}
-			// ]
 			// 定义别名
 			alias: {
 				'@': resovePath('src'),

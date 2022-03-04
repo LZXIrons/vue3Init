@@ -5,6 +5,8 @@
 import type { Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import windiCSS from 'vite-plugin-windicss'
+import { importToCDNPRO } from './importToCDN'
 import { ConfigSvgIconsPlugin } from './svgIcons'
 import { AutoRegistryComponents } from './component'
 import { AutoImportDeps } from './autoImport'
@@ -21,6 +23,8 @@ export function createVitePlugins(isBuild: boolean) {
 		vue(),
 		// JSX支持
 		vueJsx(),
+		// 生产环境使用CDN
+		importToCDNPRO(),
 		// 自动按需引入组件
 		AutoRegistryComponents(),
 		// 自动按需引入依赖
@@ -34,6 +38,8 @@ export function createVitePlugins(isBuild: boolean) {
 		// 监听配置文件改动重启
 		ConfigRestartPlugin()
 	]
+	// vite-plugin-windicss
+	vitePlugins.push(windiCSS())
 
 	// vite-plugin-svg-icons
 	vitePlugins.push(ConfigSvgIconsPlugin(isBuild))

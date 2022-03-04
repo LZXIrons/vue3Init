@@ -37,7 +37,7 @@
 		<div>{{ dialogCountDown }}</div>
 		<button class="red" @click="handleTitle">点击改变标题</button>
 		<!-- <popup @close="closeHandle"></popup> -->
-		<popup v-model:isShow="isShow" @close="closeHandle"></popup>
+		<Popup v-model:isShow="isShow" @close="closeHandle"></Popup>
 		<div v-for="(item, index) in imgListData" :key="index">
 			<img :src="item" alt="" />
 		</div>
@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import popup from '@/components/Popup/demo.vue'
+// import popup from '@/components/Popup/demo.vue'
 // import { findDetail } from '@/api/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
