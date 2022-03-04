@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div style="font-size: 18px">
 		<van-button type="primary" @click="handleShow">主要按钮</van-button>
 		<van-button type="success">成功按钮</van-button>
 		<van-button type="default">默认按钮</van-button>
@@ -177,7 +177,7 @@ watch(userInfo as any, (newName, oldName) => {
 // })
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less">
 input {
 	width: 750px;
 	padding: 0;

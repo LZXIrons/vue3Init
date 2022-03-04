@@ -110,7 +110,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 					javascriptEnabled: true,
 					// 这样就能全局使用 src/assets/styles/base.less 定义的 变量
 					additionalData: `@import "${resovePath(
-						'src/assets/styles/base.less'
+						'src/assets/less/base.less'
 					)}";`
 				},
 				scss: {
