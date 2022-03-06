@@ -76,7 +76,6 @@
     "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.4.0",
     "vite-plugin-html": "^2.1.2",
-    "vite-plugin-html-config": "^1.0.8",
     "vite-plugin-md": "^0.11.7",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-pages": "^0.20.0",

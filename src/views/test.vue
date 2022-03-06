@@ -38,7 +38,6 @@
 		<button class="red" @click="handleTitle">点击改变标题</button>
 		<Popup v-model:isShow="isShow" @close="closeHandle"></Popup>
 		<div v-for="(item, index) in imgListData" :key="index">
-			<img :src="bannerImage" alt="" />
 			<!-- <img src="/src/assets/watch-1-0.png" alt="" data-v-5752faac="" /> -->
 		</div>
 		<!-- <a-button type="primary"> Primary </a-button> -->
@@ -47,8 +46,7 @@
 
 <script lang="ts" setup>
 import Popup from '@/components/Popup/popup.vue'
-import bannerImage from '@/assets/watch-1-0.png'
-// import { findDetail } from '@/api/test'
+import { findDetail } from '@/api/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
 import { useCountDown } from '@vant/use'
@@ -90,12 +88,16 @@ const imgListData = [...Array(4)].map(
 // const test: ResData<number> = {
 //   name: 10
 // }
-// const res = await findDetail({
-// 	query: {
-// 		id: 10367
-// 	}
-// })
-// console.log('res', res)
+const res = await findDetail({
+	actid: 111551188
+	// params: {
+	// 	actid: 111551188
+	// }
+	// query: {
+	// 	actid: 111551188
+	// }
+})
+console.log('res', res)
 const copyDefineClass = new DefineClass<number>('张三', 10)
 const copyNewDefineClass = new NewDefineClass('李四', 20)
 const test1 = new TestClass('李四')

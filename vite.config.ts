@@ -34,7 +34,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 		server: {
 			host: '0.0.0.0',
 			// open: true, // 是否打开浏览器
-			port: 3000,
+			port: 3001,
 			proxy: {
 				'/zhongzhengapi/rigPortal/': {
 					target: ViteEnv.VITE_APP_RIG_API,
@@ -48,7 +48,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 					rewrite: path => path.replace(/^\/zhongzhengapi\/manageapi\//, '')
 				},
 				'^/api': {
-					target: ViteEnv.VITE_APP_RIG_API,
+					target: ViteEnv.VITE_APP_RIG_API1,
 					changeOrigin: true,
 					rewrite: path => path.replace(/^\/api/, '')
 				}

@@ -12,11 +12,12 @@ import MD5 from '@/utils/methods/md5'
 const API_BASE_URL = ''
 const axiosInstance = axios.create({
 	// baseURL: 'https://easy-mock.com', //api基本路径
+	// withCredentials: true,
 	baseURL: API_BASE_URL,
 	timeout: 10000, // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 	headers: {
 		// `headers` 是即将被发送的自定义请求头
-		'Content-Type': 'application/x-www-form-urlencoded'
+		// 'Content-Type': 'application/x-www-form-urlencoded'
 	}
 })
 
@@ -59,16 +60,17 @@ const $http = async (options: RequestOptions) => {
 			forbidClick: true
 		})
 	}
-	if (options.method == 'GET') {
-		wxRequest = axiosInstance.get(options.url, options.params) //axios的get写法
-	} else if (options.method == 'POST') {
-		if (options.params) {
-			data = options.params.query
-			config = options.params.config
-		}
-		// wxRequest = axiosInstance.post(options.url,QS.stringify(data),config); //axios的post写法
-		wxRequest = axiosInstance.post(options.url, data, config) //axios的post写法
-	}
+	// await axiosInstance.request(options)
+	// if (options.method == 'GET') {
+	// 	wxRequest = axiosInstance.get(options.url, options.params) //axios的get写法
+	// } else if (options.method == 'POST') {
+	// 	if (options.params) {
+	// 		data = options.params.query
+	// 		config = options.params.config
+	// 	}
+	// 	// wxRequest = axiosInstance.post(options.url,QS.stringify(data),config); //axios的post写法
+	// 	wxRequest = axiosInstance.post(options.url, data, config) //axios的post写法
+	// }
 
 	const res = await new Promise((resolve, reject) => {
 		wxRequest
