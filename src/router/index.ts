@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
 		path: '/',
 		name: 'Home',
 		meta: {
-			title: 'Home'
+			// title: 'Home'
 		},
 		component: componentPage.home
 	},

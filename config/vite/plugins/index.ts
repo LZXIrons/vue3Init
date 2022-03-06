@@ -6,6 +6,7 @@ import type { Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import windiCSS from 'vite-plugin-windicss'
+import { configHtmlPlugin } from './html-1'
 import { importToCDNPRO } from './importToCDN'
 import { ConfigSvgIconsPlugin } from './svgIcons'
 import { AutoRegistryComponents } from './component'
@@ -17,14 +18,14 @@ import { ConfigPagesPlugin } from './pages'
 import { ConfigMarkDownPlugin } from './markdown'
 import { ConfigRestartPlugin } from './restart'
 
-export function createVitePlugins(isBuild: boolean) {
+export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 	const vitePlugins: (Plugin | Plugin[])[] = [
 		// vue支持
 		vue(),
 		// JSX支持
 		vueJsx(),
 		// 生产环境使用CDN
-		importToCDNPRO(),
+		// importToCDNPRO(),
 		// 自动按需引入组件
 		AutoRegistryComponents(),
 		// 自动按需引入依赖
@@ -37,9 +38,14 @@ export function createVitePlugins(isBuild: boolean) {
 		ConfigMarkDownPlugin(),
 		// 监听配置文件改动重启
 		ConfigRestartPlugin()
+		//vite-plugin-html
+		// configHtmlPlugin()
 	]
 	// vite-plugin-windicss
 	vitePlugins.push(windiCSS())
+
+	// vite-plugin-html
+	vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
 
 	// vite-plugin-svg-icons
 	vitePlugins.push(ConfigSvgIconsPlugin(isBuild))

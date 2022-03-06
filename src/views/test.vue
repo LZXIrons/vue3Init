@@ -36,17 +36,18 @@
 		<br />
 		<div>{{ dialogCountDown }}</div>
 		<button class="red" @click="handleTitle">点击改变标题</button>
-		<!-- <popup @close="closeHandle"></popup> -->
 		<Popup v-model:isShow="isShow" @close="closeHandle"></Popup>
 		<div v-for="(item, index) in imgListData" :key="index">
-			<img :src="item" alt="" />
+			<img :src="bannerImage" alt="" />
+			<!-- <img src="/src/assets/watch-1-0.png" alt="" data-v-5752faac="" /> -->
 		</div>
-		<a-button type="primary"> Primary </a-button>
+		<!-- <a-button type="primary"> Primary </a-button> -->
 	</div>
 </template>
 
 <script lang="ts" setup>
-// import popup from '@/components/Popup/demo.vue'
+import Popup from '@/components/Popup/popup.vue'
+import bannerImage from '@/assets/watch-1-0.png'
 // import { findDetail } from '@/api/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
@@ -81,7 +82,7 @@ const closeHandle = () => console.log('close')
 // }
 
 const imgListData = [...Array(4)].map(
-	(_, index) => `/assets/watch-1-${index}.png`
+	(_, index) => `./assets/watch-1-${index}.png`
 )
 // const res: ImgListInterface = {
 //   name: 10

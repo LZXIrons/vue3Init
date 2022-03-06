@@ -26,6 +26,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 import imageUrl from '@/components/Image/ImageUrl.vue'
 import useClipboard from 'vue-clipboard3'
 import { Toast } from 'vant'

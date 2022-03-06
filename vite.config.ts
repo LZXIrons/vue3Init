@@ -1,5 +1,8 @@
 import { defineConfig, ConfigEnv, loadEnv } from 'vite'
 import { createVitePlugins } from './config/vite/plugins'
+import commonjs from 'rollup-plugin-commonjs'
+import externalGlobals from 'rollup-plugin-external-globals'
+
 // 路径处理模块
 import path from 'path'
 
@@ -7,36 +10,51 @@ function resovePath(paths: string) {
 	// 如何 __dirname 找不到 需要 yarn add @types/node --save-dev
 	return path.resolve(__dirname, paths)
 }
+const externals = {
+	vue: 'Vue',
+	'vue-router': 'VueRouter',
+	axios: 'axios',
+	vuex: 'Vuex',
+	pinia: 'pinia',
+	'element-ui': 'ELEMENT',
+	lodash: '_',
+	echarts: 'echarts',
+	'v-charts': 'VeIndex',
+	qs: 'Qs',
+	'ant-design-vue': 'antd',
+	vant: 'vant'
+}
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
-	const env = loadEnv(mode, __dirname)
+	const ViteEnv = loadEnv(mode, __dirname)
 	const isBuild = command === 'build'
-	console.log('env.VITE_APP_RIG_API', env.VITE_APP_RIG_API)
+	console.log('ViteEnv.VITE_APP_RIG_API', ViteEnv)
+	console.log('process', process.env.NODE_ENV)
 	return {
 		server: {
 			host: '0.0.0.0',
-			open: true, // 是否打开浏览器
+			// open: true, // 是否打开浏览器
 			port: 3000,
 			proxy: {
 				'/zhongzhengapi/rigPortal/': {
-					target: env.VITE_APP_RIG_API,
+					target: ViteEnv.VITE_APP_RIG_API,
 					changeOrigin: true,
 					rewrite: path =>
 						path.replace(/^\/zhongzhengapi\/rigPortal\//, '/rigPortal/')
 				},
 				'/zhongzhengapi/manageapi/': {
-					target: env.VITE_APP_MANAGE_API,
+					target: ViteEnv.VITE_APP_MANAGE_API,
 					changeOrigin: true,
 					rewrite: path => path.replace(/^\/zhongzhengapi\/manageapi\//, '')
 				},
 				'^/api': {
-					target: env.VITE_APP_RIG_API,
+					target: ViteEnv.VITE_APP_RIG_API,
 					changeOrigin: true,
 					rewrite: path => path.replace(/^\/api/, '')
 				}
 			}
 		},
-		plugins: createVitePlugins(isBuild),
+		plugins: createVitePlugins(ViteEnv, isBuild),
 		resolve: {
 			// 定义别名
 			alias: {
@@ -45,6 +63,10 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				'@config': resovePath('src/config'),
 				'@utils': resovePath('src/utils'),
 				'@api': resovePath('src/api')
+				// vue: 'https://esm.sh/vue@3.0.6',
+				// 'ant-design-vue': 'https://esm.sh/ant-design-vue@next',
+				// vuex: 'https://esm.sh/vuex@4.0.2',
+				// 'vue-router': 'https://esm.sh/vue-router@4.0.10'
 			}
 		},
 		css: {
@@ -84,6 +106,19 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				}
 			},
 			rollupOptions: {
+				external: [
+					'vue',
+					'vue-router',
+					'axios',
+					'vuex',
+					'element-ui',
+					'lodash',
+					'echarts',
+					'v-charts',
+					'qs',
+					'pinia'
+				],
+				plugins: [commonjs(), externalGlobals(externals)],
 				treeshake: false,
 				output: {
 					manualChunks(id) {
