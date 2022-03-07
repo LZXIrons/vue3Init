@@ -40,28 +40,28 @@
 		<div v-for="(item, index) in imgListData" :key="index">
 			<!-- <img src="/src/assets/watch-1-0.png" alt="" data-v-5752faac="" /> -->
 		</div>
-		<!-- <a-button type="primary"> Primary </a-button> -->
+		<a-button type="primary"> Primary </a-button>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import Popup from '@/components/Popup/popup.vue'
-import { findDetail, findGoodsDetail } from '@/api/test'
+import { findGoodsDetail } from '@/api/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
 import { useCountDown } from '@vant/use'
-import {
-	ref,
-	reactive,
-	computed,
-	watchEffect,
-	watch,
-	onMounted,
-	onUpdated,
-	provide
-} from 'vue'
-onMounted(() => {
-	console.log('-------------onMounted', title.value)
+
+onMounted(async () => {
+	const res = await findGoodsDetail({
+		id: 10367
+		// params: {
+		// 	actid: 111551188
+		// }
+		// query: {
+		// 	actid: 111551188
+		// }
+	})
+	console.log('res', res)
 })
 onUpdated(() => {
 	console.log('-------------onUpdated')
@@ -88,18 +88,7 @@ const imgListData = [...Array(4)].map(
 // const test: ResData<number> = {
 //   name: 10
 // }
-const res = await findGoodsDetail({
-	query: {
-		id: 10367
-	}
-	// params: {
-	// 	actid: 111551188
-	// }
-	// query: {
-	// 	actid: 111551188
-	// }
-})
-console.log('res', res)
+
 const copyDefineClass = new DefineClass<number>('张三', 10)
 const copyNewDefineClass = new NewDefineClass('李四', 20)
 const test1 = new TestClass('李四')

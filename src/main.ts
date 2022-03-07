@@ -12,5 +12,5 @@ import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 import 'virtual:windi-utilities.css'
 const app = createApp(App)
-app.use(store).use(createPinia()).use(router).mount('#app')
-// app.use(store).use(router).mount('#app')
+// app.use(store).use(createPinia()).use(router).mount('#app')
+app.use(store).use(router).mount('#app')

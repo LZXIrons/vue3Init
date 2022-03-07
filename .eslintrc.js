@@ -9,7 +9,8 @@ module.exports = {
 		'@vue/typescript/recommended',
 		'prettier',
 		'@vue/prettier',
-		'@vue/prettier/@typescript-eslint'
+		'@vue/prettier/@typescript-eslint',
+		'./.eslintrc-auto-import.json'
 	],
 	plugins: ['prettier'],
 	parserOptions: {
@@ -27,6 +28,7 @@ module.exports = {
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/no-var-requires': 0,
+		'react/jsx-no-undef': 'off',
 		'@typescript-eslint/member-delimiter-style': [
 			'error',
 			{
@@ -55,6 +57,7 @@ module.exports = {
 	globals: {
 		defineProps: 'readonly',
 		defineEmits: 'readonly',
+		defineComponent: 'readonly',
 		defineExpose: 'readonly'
 	}
 }

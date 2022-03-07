@@ -26,17 +26,17 @@
 // 	}
 // })
 import { findGoodsDetail } from '@/api/test'
-import {
-	ref,
-	reactive,
-	computed,
-	watchEffect,
-	watch,
-	onMounted,
-	onUpdated,
-	provide
-} from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+// import {
+// 	ref,
+// 	reactive,
+// 	computed,
+// 	watchEffect,
+// 	watch,
+// 	onMounted,
+// 	onUpdated,
+// 	provide
+// } from 'vue'
+// import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const title = '哈哈哈'
 const goabout = () => {
