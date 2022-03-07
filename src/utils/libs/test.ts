@@ -3,33 +3,61 @@
 // import $Func from './function.js'
 // import $Tips from './tip'
 // axios.defaults.adapter = mpAdapter
+// import { $post } from '@/utils/libs/test'
+// import type { RequestOptions } from '#/axios'
 
 import axios, { AxiosRequestConfig } from 'axios'
-// import type { RequestOptions } from '@/type/axios'
 import { Toast } from 'vant'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'
 const API_BASE_URL = ''
+// 请求列表(防重复提交)
+const pending: Array<any> = [] //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
+const cancelToken = axios.CancelToken
 const axiosInstance = axios.create({
-	// baseURL: 'https://easy-mock.com', //api基本路径
 	// withCredentials: true,
 	baseURL: API_BASE_URL,
 	timeout: 10000, // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 	headers: {
 		// `headers` 是即将被发送的自定义请求头
-		// 'Content-Type': 'application/x-www-form-urlencoded'
+		'Content-Type': 'application/x-www-form-urlencoded'
 	}
 })
+
+const removePending = config => {
+	for (const p in pending) {
+		if (pending[p].u === config.url + '&' + config.method) {
+			//当当前请求在数组中存在时执行函数体
+			pending[p].f() //执行取消操作
+			pending.splice(p, 1) //把这条记录从数组中移除
+		}
+	}
+}
 
 // 请求拦截器
 axiosInstance.interceptors.request.use(
 	(config: AxiosRequestConfig) => {
 		// 发送请求之前你可以在这里对config做一些事情
 		console.log('请求被拦截到了，加点料', config)
+		let contentType
 		const reqTime = formatTime(new Date())
 		const hash = 'retire_' + new Date().getFullYear() + ':' + reqTime
-		config.headers!.reqTime = reqTime
-		config.headers!.sign = MD5(hash) //数据加密
+		const _isGetMethod = config.method === 'get'
+		if (_isGetMethod) {
+			contentType = 'application/x-www-form-urlencoded;charset=UTF-8'
+		} else {
+			contentType = 'application/json;charset=UTF-8'
+		}
+
+		removePending(config) //在一个ajax发送前执行一下取消操作
+		config.cancelToken = new cancelToken(c => {
+			pending.push({ u: config.url + '&' + config.method, f: c })
+		})
+		config.headers = Object.assign({}, config.headers, {
+			reqTime,
+			sign: MD5(hash),
+			contentType
+		})
 		return config
 	},
 	error => {
@@ -42,17 +70,28 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
 	response => {
 		console.log('拦截到响应数据了，我过滤下,过滤前的数据：', response)
-		// Do something with response data
-		return response.data
+		removePending(response.config) //在一个ajax响应后再执行一下取消操作，把已经完成的请求从pending中移除
+		return Promise.resolve(response.data)
+		// return response.data
 	},
 	error => {
 		// Do something with response error
-		return Promise.reject(error)
+		//置空请求列表
+		pending.length = 0
+		return Promise.resolve({
+			data: {
+				success: false,
+				msg: typeof error === 'string' ? error : error.message
+			}
+		})
+		// return Promise.reject(error)
 	}
 )
-const $http = async (options: RequestOptions) => {
-	let wxRequest, data, config
-	console.log(options)
+const $http = <T>(
+	config: AxiosRequestConfig,
+	options: RequestOptions
+): Promise<T> => {
+	console.log('options', options)
 	if (options.isLoad) {
 		Toast.loading({
 			message: '加载中...',
@@ -60,20 +99,9 @@ const $http = async (options: RequestOptions) => {
 			forbidClick: true
 		})
 	}
-	// await axiosInstance.request(options)
-	// if (options.method == 'GET') {
-	// 	wxRequest = axiosInstance.get(options.url, options.params) //axios的get写法
-	// } else if (options.method == 'POST') {
-	// 	if (options.params) {
-	// 		data = options.params.query
-	// 		config = options.params.config
-	// 	}
-	// 	// wxRequest = axiosInstance.post(options.url,QS.stringify(data),config); //axios的post写法
-	// 	wxRequest = axiosInstance.post(options.url, data, config) //axios的post写法
-	// }
-
-	const res = await new Promise((resolve, reject) => {
-		wxRequest
+	return new Promise((resolve, reject) => {
+		axiosInstance
+			.request(config)
 			.then(res => {
 				resolve(res.data)
 			})
@@ -81,47 +109,40 @@ const $http = async (options: RequestOptions) => {
 				Toast(err)
 				reject(err.data)
 			})
-	})
-	if (options.isLoad) {
-		Toast.loading({
-			message: '加载中...',
-			duration: 500,
-			forbidClick: true
-		})
-	}
-	return res
-}
-
-/**
- * get方法，对应get请求
- * @param {String} url [请求的url地址]
- * @param {Object} params [请求时携带的参数]
- */
-const $get = (url: string, params?: Record<string, unknown>, isLoad = true) => {
-	return $http({
-		params,
-		url,
-		isLoad,
-		method: 'GET'
+		if (options.isLoad) {
+			Toast.loading({
+				message: '加载中...',
+				duration: 500,
+				forbidClick: true
+			})
+		}
 	})
 }
 
-/**
- * post方法，对应post请求
- * @param {String} url [请求的url地址]
- * @param {Object} params [请求时携带的参数]
- */
-const $post = (
-	url: string,
-	params?: Record<string, unknown>,
-	isLoad = true
-) => {
-	return $http({
-		params,
-		url,
-		isLoad,
-		method: 'POST'
-	})
+const $get = <T>(
+	config: AxiosRequestConfig,
+	options: RequestOptions
+): Promise<T> => {
+	return $http({ ...config, method: 'GET' }, options)
+}
+
+const $post = <T>(
+	config: AxiosRequestConfig,
+	options: RequestOptions
+): Promise<T> => {
+	return $http({ ...config, method: 'POST' }, options)
+}
+const $put = <T>(
+	config: AxiosRequestConfig,
+	options: RequestOptions
+): Promise<T> => {
+	return $http({ ...config, method: 'PUT' }, options)
+}
+const $delete = <T>(
+	config: AxiosRequestConfig,
+	options: RequestOptions
+): Promise<T> => {
+	return $http({ ...config, method: 'DELETE' }, options)
 }
 
 // 多个接口迸发调用后统一处理数据
@@ -178,4 +199,4 @@ const $requestCancel = (params: Record<string, unknown>, url: string) => {
 	// cancel the request
 	cancel('取消请求')
 }
-export { $post, $get, $all, $catchError, $requestCancel }
+export { $post, $get, $put, $delete, $all, $catchError, $requestCancel }

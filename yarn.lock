@@ -23,9 +23,9 @@
   dependencies:
     "@ctrl/tinycolor" "^3.3.1"
 
-"@ant-design/colors@^6.0.0":
+"@ant-design/colors@^6.0.0", "@ant-design/colors@^6.0.1":
   version "6.0.0"
-  resolved "https://registry.npmjs.org/@ant-design/colors/-/colors-6.0.0.tgz"
+  resolved "https://registry.npmmirror.com/@ant-design/colors/-/colors-6.0.0.tgz#9b9366257cffcc47db42b9d0203bb592c13c0298"
   integrity sha512-qAZRvPzfdWHtfameEGP2Qvuf838NhergR35o+EuVyB5XvSA98xod5r4utvi4TJ3ywmevm290g9nsCG5MryrdWQ==
   dependencies:
     "@ctrl/tinycolor" "^3.4.0"
@@ -6981,11 +6981,6 @@ vite-plugin-compression@^0.4.0:
     chalk "^4.1.2"
     debug "^4.3.3"
     fs-extra "^10.0.0"
-
-vite-plugin-html-config@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/vite-plugin-html-config/-/vite-plugin-html-config-1.0.8.tgz#7217424afe05deaacec309a77a6631532e7fa6d4"
-  integrity sha512-3tTtBQO+6zpC8uzAAfj3FWygj+V6H6F9fEt5KtB3j5UHsRYP0yLpTHsMvubXtqCXbKDp1oOakYYSjprqYcbrpA==
 
 vite-plugin-html@^2.1.2:
   version "2.1.2"

@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 import Popup from '@/components/Popup/popup.vue'
-import { findDetail } from '@/api/test'
+import { findDetail, findGoodsDetail } from '@/api/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
 import { useCountDown } from '@vant/use'
@@ -88,8 +88,10 @@ const imgListData = [...Array(4)].map(
 // const test: ResData<number> = {
 //   name: 10
 // }
-const res = await findDetail({
-	actid: 111551188
+const res = await findGoodsDetail({
+	query: {
+		id: 10367
+	}
 	// params: {
 	// 	actid: 111551188
 	// }
