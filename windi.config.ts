@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite-plugin-windicss'
-import { primaryColor } from './build/config/themeConfig'
+import { primaryColor } from './config/theme'
 
 export default defineConfig({
 	darkMode: 'class',
@@ -20,6 +20,13 @@ export default defineConfig({
 				'2xl': '1600px'
 			}
 		}
+	},
+	alias: {
+		hstack: 'flex items-center',
+		vstack: 'flex flex-col',
+		icon: 'w-6 h-6 fill-current',
+		app: 'text-red',
+		'app-border': 'border-gray-200 dark:border-dark-300'
 	}
 })
 

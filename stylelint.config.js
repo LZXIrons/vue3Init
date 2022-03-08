@@ -20,9 +20,19 @@ module.exports = {
 		'at-rule-no-unknown': [
 			true,
 			{
-				ignoreAtRules: ['include', 'mixin']
+				ignoreAtRules: [
+					'include',
+					'mixin',
+					'layer',
+					'apply',
+					'variants',
+					'responsive',
+					'theme'
+				]
 			}
 		],
+		'declaration-block-trailing-semicolon': null,
+		'no-descending-specificity': null,
 		'rule-empty-line-before': ['never']
 	},
 	ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts']

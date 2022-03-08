@@ -20,4 +20,9 @@ export default defineComponent({
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.dark .dark\:text-green-400 {
+	--tw-text-opacity: 1;
+
+	color: rgba(52, 211, 153, var(--tw-text-opacity));
+}
 </style>
