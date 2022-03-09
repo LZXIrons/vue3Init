@@ -5,8 +5,10 @@
 // axios.defaults.adapter = mpAdapter
 // import { $post } from '@/utils/libs/test'
 // import type { RequestOptions } from '#/axios'
-
+import signUtils from '@/utils/libs/gatewaySign'
 import axios, { AxiosRequestConfig } from 'axios'
+import Cookies from 'js-cookie'
+import { TOKENID } from '@config/constant'
 import { Toast } from 'vant'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'
@@ -15,7 +17,6 @@ const API_BASE_URL = ''
 const pending: Array<any> = [] //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 const cancelToken = axios.CancelToken
 const axiosInstance = axios.create({
-	// withCredentials: true,
 	baseURL: API_BASE_URL,
 	timeout: 10000, // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 	headers: {
@@ -29,7 +30,7 @@ const removePending = config => {
 		if (pending[p].u === config.url + '&' + config.method) {
 			//当当前请求在数组中存在时执行函数体
 			pending[p].f() //执行取消操作
-			pending.splice(p, 1) //把这条记录从数组中移除
+			pending.splice(Number(p), 1) //把这条记录从数组中移除
 		}
 	}
 }
@@ -58,6 +59,14 @@ axiosInstance.interceptors.request.use(
 			sign: MD5(hash),
 			contentType
 		})
+		const tokenId = Cookies.get(TOKENID) || ''
+		// gateway - 走网关的接口
+		if (config.headers.gateway) {
+			if (tokenId) {
+				config.headers['wb-token'] = tokenId
+			}
+			config = signUtils(config)
+		}
 		return config
 	},
 	error => {
