@@ -8,7 +8,7 @@
     "ppe": "vite serve --mode ppe",
     "prod": "vite serve --mode production",
     "serve": "vite preview",
-    "build": "vite build --base=/vue3Init/",
+    "build": "vite build",
     "build:dev": "vue-tsc --noEmit && vite build --mode development",
     "build:test": "vue-tsc --noEmit && vite build --mode test",
     "build:ppe": "vue-tsc --noEmit && vite build --mode ppe",
