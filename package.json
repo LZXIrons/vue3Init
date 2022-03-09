@@ -1,6 +1,7 @@
 {
   "name": "vite2vue3study",
   "version": "0.0.1",
+  "homepage": "https://[username].github.io/github-actions-demo",
   "scripts": {
     "dev": "vite serve --mode development",
     "test": "vite serve --mode test",
