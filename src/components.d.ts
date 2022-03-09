@@ -7,6 +7,7 @@ declare module 'vue' {
     Customer: typeof import('./components/Popup/customer.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Popup: typeof import('./components/Popup/popup.vue')['default']
+    VanButton: typeof import('vant/es')['Button']
   }
 }
 
