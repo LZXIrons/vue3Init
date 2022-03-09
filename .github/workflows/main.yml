@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: buildAndDeploy
 
 # Controls when the workflow will run
 on:
@@ -27,5 +27,5 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: build
+        FOLDER: dist
         BUILD_SCRIPT: npm install && npm run build
