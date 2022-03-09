@@ -1,14 +1,14 @@
 {
   "name": "vite2vue3study",
   "version": "0.0.1",
-  "homepage": "https://[username].github.io/github-actions-demo",
+  "homepage": "https://[username].github.io/vue3Init",
   "scripts": {
     "dev": "vite serve --mode development",
     "test": "vite serve --mode test",
     "ppe": "vite serve --mode ppe",
     "prod": "vite serve --mode production",
     "serve": "vite preview",
-    "build": "vite build",
+    "build": "vite build --base=/vue3Init/",
     "build:dev": "vue-tsc --noEmit && vite build --mode development",
     "build:test": "vue-tsc --noEmit && vite build --mode test",
     "build:ppe": "vue-tsc --noEmit && vite build --mode ppe",
