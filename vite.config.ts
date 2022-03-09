@@ -60,7 +60,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 			alias: {
 				'@': resovePath('src'),
 				'@components': resovePath('src/components'),
-				'@config': resovePath('src/config'),
+				'@config': resovePath('config/'),
 				'@utils': resovePath('src/utils'),
 				'@api': resovePath('src/api')
 				// vue: 'https://esm.sh/vue@3.0.6',

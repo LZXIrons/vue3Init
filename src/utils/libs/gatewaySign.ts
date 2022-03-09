@@ -1,6 +1,6 @@
 import qs from 'qs'
 import MD5 from '@/utils/methods/md5'
-import { TOKENID } from '@/constant'
+import { TOKENID } from '@config/constant'
 import uuid from '../methods/uuid'
 import { objKeySort } from '../methods/format'
 import { AxiosRequestConfig } from 'axios'
@@ -27,7 +27,7 @@ export default (request: AxiosRequestConfig) => {
 	// const needToken = { 'wb-token': '67505d34-c462-4874-81eb-cc7d210cc771' }
 	const needToken = Cookies.get(TOKENID)
 		? {
-				'wb-token': Cookies.get(TOKENID) || request.headers['wb-token']
+				'wb-token': Cookies.get(TOKENID) || request.headers!['wb-token']
 		  }
 		: {}
 

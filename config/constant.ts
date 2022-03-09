@@ -34,3 +34,15 @@ export const COMPRESSION = true
 
 // 删除 console
 export const VITE_DROP_CONSOLE = true
+export const TOKENID = 'wbiao.memberservice.tokenid'
+export const WBIAOID = 'wbiaoid'
+
+export class Properties {
+	static tokenId = 'wb_sess'
+	static userinfo = 'userinfo'
+	static wbiaoid = 'wbiaoid'
+	static TALENT_ID = 'talentId'
+	static KEFU_ID = 'kfd'
+	static WBIAOID = 'wbiaoid'
+	static APP_SOURCE = 'app-source'
+}
