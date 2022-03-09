@@ -17,7 +17,6 @@ const API_BASE_URL = ''
 const pending: Array<any> = [] //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 const cancelToken = axios.CancelToken
 const axiosInstance = axios.create({
-	// withCredentials: true,
 	baseURL: API_BASE_URL,
 	timeout: 10000, // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 	headers: {
@@ -62,12 +61,12 @@ axiosInstance.interceptors.request.use(
 		})
 		const tokenId = Cookies.get(TOKENID) || ''
 		// gateway - 走网关的接口
-		// if (config.headers.gateway) {
-		// 	if (tokenId) {
-		// 		config.headers['wb-token'] = tokenId
-		// 	}
-		// 	config = signUtils(config)
-		// }
+		if (config.headers.gateway) {
+			if (tokenId) {
+				config.headers['wb-token'] = tokenId
+			}
+			config = signUtils(config)
+		}
 		return config
 	},
 	error => {
