@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="dark:bg-slate-900 dark\:text-green-400 flex justify-center items-center"
+		class="text-red-400 dark:text-green-400 bg-white flex justify-center items-center"
 	>
 		<button @click="goabout">{{ title }}</button>
 		<van-button type="primary" @click="handleShow">接口请求</van-button>
@@ -12,7 +12,7 @@
 import { findGoodsDetail } from '@/api/test'
 import { testStore } from '@/store/pinia'
 const router = useRouter()
-const title = '哈哈哈'
+const title = '哈哈哈1'
 // const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
 const appStore = testStore()
 const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -22,10 +22,10 @@ const isDark = useDark({
 	// valueDark: 'dark',
 	// valueLight: 'light',
 	// storageKey: 'arco-theme',
-	onChanged(dark: boolean) {
-		console.log('样式切换')
-		appStore.toggleTheme(dark)
-	}
+	// onChanged(dark: boolean) {
+	// 	console.log('样式切换')
+	// 	appStore.toggleTheme(dark)
+	// }
 })
 const toggleTheme = useToggle(isDark)
 const theme = computed(() => {

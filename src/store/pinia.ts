@@ -18,13 +18,13 @@ export const testStore = defineStore({
 			this.test += 1
 		},
 		toggleTheme(dark) {
-			if (dark) {
-				this.theme = 'dark'
-				document.documentElement.classList.add('dark')
-			} else {
-				this.theme = 'light'
-				document.documentElement.classList.remove('dark')
-			}
+			// if (dark) {
+			// 	this.theme = 'dark'
+			// 	document.documentElement.classList.add('dark')
+			// } else {
+			// 	this.theme = 'light'
+			// 	document.documentElement.classList.remove('dark')
+			// }
 		}
 	}
 })
