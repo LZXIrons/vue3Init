@@ -5,8 +5,10 @@
 // axios.defaults.adapter = mpAdapter
 // import { $post } from '@/utils/libs/test'
 // import type { RequestOptions } from '#/axios'
-
+import signUtils from '@/utils/libs/gatewaySign'
 import axios, { AxiosRequestConfig } from 'axios'
+import Cookies from 'js-cookie'
+import { TOKENID } from '@config/constant'
 import { Toast } from 'vant'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'
@@ -29,7 +31,7 @@ const removePending = config => {
 		if (pending[p].u === config.url + '&' + config.method) {
 			//当当前请求在数组中存在时执行函数体
 			pending[p].f() //执行取消操作
-			pending.splice(p, 1) //把这条记录从数组中移除
+			pending.splice(Number(p), 1) //把这条记录从数组中移除
 		}
 	}
 }
@@ -58,6 +60,14 @@ axiosInstance.interceptors.request.use(
 			sign: MD5(hash),
 			contentType
 		})
+		const tokenId = Cookies.get(TOKENID) || ''
+		// gateway - 走网关的接口
+		// if (config.headers.gateway) {
+		// 	if (tokenId) {
+		// 		config.headers['wb-token'] = tokenId
+		// 	}
+		// 	config = signUtils(config)
+		// }
 		return config
 	},
 	error => {

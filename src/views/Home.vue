@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="dark:bg-slate-900 dark\:text-green-400 flex justify-center items-center"
+		class="text-red-400 dark:text-green-400 flex justify-center items-center"
 	>
 		<button @click="goabout">{{ title }}</button>
 		<van-button type="primary" @click="handleShow">接口请求</van-button>
@@ -9,24 +9,12 @@
 </template>
 
 <script lang="ts" setup>
-import { findGoodsDetail } from '@/api/test'
+import { findGoodsDetail, wbApi } from '@/api/test'
 import { testStore } from '@/store/pinia'
 const router = useRouter()
 const title = '哈哈哈'
-// const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
 const appStore = testStore()
-const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
-const isDark = useDark({
-	// selector: 'body',
-	// attribute: 'arco-theme',
-	// valueDark: 'dark',
-	// valueLight: 'light',
-	// storageKey: 'arco-theme',
-	onChanged(dark: boolean) {
-		console.log('样式切换')
-		appStore.toggleTheme(dark)
-	}
-})
+const isDark = useDark()
 const toggleTheme = useToggle(isDark)
 const theme = computed(() => {
 	return appStore.theme
@@ -50,9 +38,10 @@ const handleShow = async () => {
 }
 const init = async () => {
 	try {
-		const res = await findGoodsDetail({
-			id: 10367
-		})
+		const res = await wbApi()
+		// const res = await findGoodsDetail({
+		// 	id: 10367
+		// })
 		console.log(res)
 	} catch (error) {
 		console.log('接口请求错误')

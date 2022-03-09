@@ -1,6 +1,8 @@
 import { $post, $get } from '@/utils/libs/test'
 // import wxRequest from '../utils/wxRequest.js'
-const proxyRigUrl = '/api'
+// import { proxyRigUrl } from '@config/constant'
+const proxyRigUrl = '/zhongzhengapi/rigPortal'
+// const proxyRigUrl = '/api'
 //区域接口
 export const findGoodsDetail = params =>
 	$post(
@@ -9,5 +11,11 @@ export const findGoodsDetail = params =>
 	)
 // export const findDetail = (params?: Record<string, unknown>) =>
 // 	$post(proxyRigUrl + '/topic/detail', params, false)
-// export const testApi = (params?: Record<string, unknown>) =>
-// 	$post(proxyRigUrl + '/wbshare/content/getSurveyorDataInfo', params, false)
+export const wbApi = () =>
+	$get(
+		{
+			url: proxyRigUrl + '/wbshare/content/getSurveyorDataInfo',
+			headers: { gateway: true }
+		},
+		{ isLoad: false }
+	)
