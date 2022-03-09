@@ -1,4 +1,4 @@
-import { $post, $get } from '@/utils/libs/test'
+import { $post, $get } from '@/utils/libs/axios'
 // import wxRequest from '../utils/wxRequest.js'
 // import { proxyRigUrl } from '@config/constant'
 const proxyRigUrl = '/zhongzhengapi/rigPortal'
