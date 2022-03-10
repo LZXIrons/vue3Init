@@ -5,6 +5,7 @@
 import type { Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import legacy from '@vitejs/plugin-legacy'
 import windiCSS from 'vite-plugin-windicss'
 import { configHtmlPlugin } from './html'
 import { importToCDNPRO } from './importToCDN'
@@ -19,6 +20,7 @@ import { ConfigMarkDownPlugin } from './markdown'
 import { ConfigRestartPlugin } from './restart'
 
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
+	const { VITE_LEGACY } = viteEnv
 	const vitePlugins: (Plugin | Plugin[])[] = [
 		// vue支持
 		vue(),
@@ -39,6 +41,8 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 		// 监听配置文件改动重启
 		ConfigRestartPlugin()
 	]
+	// @vitejs/plugin-legacy
+	VITE_LEGACY && isBuild && vitePlugins.push(legacy())
 	// vite-plugin-windicss
 	vitePlugins.push(windiCSS())
 

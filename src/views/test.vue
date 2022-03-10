@@ -54,12 +54,7 @@ import { useCountDown } from '@vant/use'
 onMounted(async () => {
 	const res = await findGoodsDetail({
 		id: 10367
-		// params: {
 		// 	actid: 111551188
-		// }
-		// query: {
-		// 	actid: 111551188
-		// }
 	})
 	console.log('res', res)
 })
