@@ -48,6 +48,11 @@ const init = async () => {
 	}
 }
 onMounted(() => {
+	const count = ref(1)
+	const obj = reactive({ count })
+	const obj1 = reactive({ a: 1 })
+	const obj2 = ref(obj1)
+	console.log(count.value, obj, 'obj2=', obj2.value)
 	init()
 })
 </script>
