@@ -7,7 +7,8 @@
 		<meta name="force-rendering" content="webkit" />
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		 <title><%= title %></title>
+		<title><%= title %></title>
+		 <!-- <title><%= title %></title>
 		<% if(appEnv==="pro") { %>
 			<script type="text/javascript">
 				// 错误监控相关代码
@@ -15,8 +16,8 @@
 			</script>
 		<% } %>
 		<% for (var i in cdn&&cdn.js) { %>
-		<script  src="<%= cdn.js[i] %>"></script>
-		<% } %>
+		<script  src="<%= cdn.js[i] %>" type="module"></script>
+		<% } %> -->
 		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ant-design-vue@2.0.0-rc.9/dist/antd.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue-router@4.0.13/dist/vue-router.global.min.js"></script>

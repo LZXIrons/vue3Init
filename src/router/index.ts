@@ -40,7 +40,7 @@ const router = createRouter({
 })
 // tdk
 router.beforeEach((to, from, next) => {
-	console.log('router.beforeEach---------')
+	console.log('router.beforeEach---------', componentPage.home)
 	tdkMethod(to, from, next)
 })
 export default router
