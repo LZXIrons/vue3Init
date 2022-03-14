@@ -13,7 +13,7 @@ import {
 
 export const AutoRegistryComponents = () => {
 	return Components({
-		// dirs: ['src/components'],
+		dirs: ['src/components'],
 		extensions: ['vue', 'md'],
 		deep: true,
 		dts: 'src/components.d.ts',
@@ -26,7 +26,7 @@ export const AutoRegistryComponents = () => {
 			IconsResolver({
 				componentPrefix: ''
 			}),
-			AntDesignVueResolver(),
+			// AntDesignVueResolver(),
 			VantResolver(),
 			ArcoResolver({ importStyle: 'less' }),
 			VueUseComponentsResolver()

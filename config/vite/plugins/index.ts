@@ -18,7 +18,6 @@ import { ConfigCompressPlugin } from './compress'
 import { ConfigPagesPlugin } from './pages'
 import { ConfigMarkDownPlugin } from './markdown'
 import { ConfigRestartPlugin } from './restart'
-import htmlPlugin from 'vite-plugin-html-config'
 
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 	const { VITE_LEGACY } = viteEnv
@@ -28,7 +27,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 		// JSX支持
 		vueJsx(),
 		// 生产环境使用CDN
-		importToCDNPRO(),
+		// importToCDNPRO(),
 		// 自动按需引入组件
 		AutoRegistryComponents(),
 		// 自动按需引入依赖
@@ -41,26 +40,6 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 		ConfigMarkDownPlugin(),
 		// 监听配置文件改动重启
 		ConfigRestartPlugin()
-		// htmlPlugin({
-		// 	links: [
-		// 		{
-		// 			rel: 'stylesheet',
-		// 			href: 'https://cdn.jsdelivr.net/npm/cesium@1.90.0/Build/Cesium/Widgets/widgets.css'
-		// 		}
-		// 	],
-		// 	scripts: [
-		// 		{
-		// 			src: 'https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.min.js'
-		// 		},
-		// 		{
-		// 			src: 'https://cdn.jsdelivr.net/npm/vue-router@4.0.13/dist/vue-router.global.prod.js'
-		// 		},
-		// 		{
-		// 			src: 'https://cdn.jsdelivr.net/npm/vuex@4.0.2/dist/vuex.global.min.js'
-		// 		}
-		// 	]
-		// 	// 字节cdn有问题
-		// })
 	]
 	// @vitejs/plugin-legacy
 	VITE_LEGACY && isBuild && vitePlugins.push(legacy())
@@ -68,7 +47,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 	vitePlugins.push(windiCSS())
 
 	// vite-plugin-html
-	// vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
+	vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
 
 	// vite-plugin-svg-icons
 	vitePlugins.push(ConfigSvgIconsPlugin(isBuild))
@@ -77,7 +56,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 	vitePlugins.push(ConfigMockPlugin(isBuild))
 
 	// rollup-plugin-visualizer
-	vitePlugins.push(ConfigVisualizerConfig())
+	// vitePlugins.push(ConfigVisualizerConfig())
 
 	return vitePlugins
 }

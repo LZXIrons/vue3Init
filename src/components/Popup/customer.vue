@@ -2,12 +2,12 @@
 	<div class="customer-view">
 		<div class="title">联系客服</div>
 		<div class="img">
-			<imageUrl
+			<!-- <imageUrl
 				:src="static + 'zhongzheng/images/detection_code.png'"
 				type="staticOrigin"
 				height="169px"
 				width="169px"
-			/>
+			/> -->
 		</div>
 		<div class="desc">手机号/微信号:</div>
 		<div class="phone">
@@ -27,12 +27,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import imageUrl from '@/components/Image/ImageUrl.vue'
+// import imageUrl from '@/components/Image/ImageUrl.vue'
 import useClipboard from 'vue-clipboard3'
 import { Toast } from 'vant'
 export default defineComponent({
 	components: {
-		imageUrl
+		// imageUrl
 	},
 	inheritAttrs: false,
 	emits: ['click'],

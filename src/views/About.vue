@@ -1,26 +1,24 @@
-<template>
-	<div class="about">
-		<h1>about page</h1>
-		{{ getTest }}
-		<HelloWorld :msg="'msg:' + Math.random()"></HelloWorld>
-	</div>
-</template>
+<template>about</template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { mapGetters } from 'vuex'
 
 export default defineComponent({
-	name: 'About',
-	computed: {
-		...mapGetters(['getTest'])
-	},
-	methods: {},
-	created() {
-		console.log('MODE:' + import.meta.env.MODE)
-		console.log('BASE_URL:' + import.meta.env.BASE_URL)
-		console.log('PROD:' + import.meta.env.PROD)
-		console.log('DEV:' + import.meta.env.DEV)
-		console.log('VITE_APP_TITLE:' + import.meta.env.VITE_APP_TITLE)
-	}
+	components: {}
 })
 </script>
+
+<style>
+#app {
+	/* margin-top: 60px; */
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	color: #2c3e50;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.dark .dark\:text-green-400 {
+	--tw-text-opacity: 1;
+
+	color: rgba(52, 211, 153, var(--tw-text-opacity));
+}
+</style>

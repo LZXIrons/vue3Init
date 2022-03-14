@@ -11,18 +11,18 @@ function resovePath(paths: string) {
 	return path.resolve(__dirname, paths)
 }
 const externals = {
-	vue: 'Vue',
-	'vue-router': 'VueRouter',
-	axios: 'axios',
-	vuex: 'Vuex',
-	pinia: 'pinia',
-	'element-ui': 'ELEMENT',
-	lodash: '_',
-	echarts: 'echarts',
-	'v-charts': 'VeIndex',
-	qs: 'Qs',
-	'ant-design-vue': 'antd',
-	vant: 'vant'
+	// vue: 'Vue',
+	// 'vue-router': 'VueRouter',
+	// vuex: 'Vuex',
+	// pinia: 'pinia',
+	// axios: 'axios',
+	// 'element-ui': 'ELEMENT',
+	// lodash: '_',
+	// echarts: 'echarts',
+	// 'v-charts': 'VeIndex',
+	// qs: 'Qs',
+	// 'ant-design-vue': 'antd',
+	// vant: 'vant'
 }
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
@@ -62,11 +62,11 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				'@components': resovePath('src/components'),
 				'@config': resovePath('config/'),
 				'@utils': resovePath('src/utils'),
-				'@api': resovePath('src/api')
-				// vue: 'https://esm.sh/vue@3.0.6',
+				'@api': resovePath('src/api'),
+				// 'vue': 'https://esm.sh/vue@3.0.6',
+				// 'vuex': 'https://esm.sh/vuex@4.0.2',
+				// 'vue-router': 'https://esm.sh/vue-router@4.0.10',
 				// 'ant-design-vue': 'https://esm.sh/ant-design-vue@next',
-				// vuex: 'https://esm.sh/vuex@4.0.2',
-				// 'vue-router': 'https://esm.sh/vue-router@4.0.10'
 			}
 		},
 		css: {
@@ -106,18 +106,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				}
 			},
 			rollupOptions: {
-				external: [
-					'vue',
-					'vue-router',
-					'axios',
-					'vuex',
-					'element-ui',
-					'lodash',
-					'echarts',
-					'v-charts',
-					'qs',
-					'pinia'
-				],
+				external: Object.keys(externals),
 				plugins: [commonjs(), externalGlobals(externals)],
 				treeshake: false,
 				output: {
@@ -136,7 +125,15 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 		define: { 'process.env': {} },
 		// 引入第三方配置
 		optimizeDeps: {
-			include: []
+			include: [
+				'vue',
+				'vue-router',
+				'@vueuse/core',
+				// '@vueuse/head',
+			],
+			exclude: [
+				'vue-demi',
+			]
 		}
 	}
 })
