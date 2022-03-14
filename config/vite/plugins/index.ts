@@ -27,7 +27,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 		// JSX支持
 		vueJsx(),
 		// 生产环境使用CDN
-		// importToCDNPRO(),
+		importToCDNPRO(),
 		// 自动按需引入组件
 		AutoRegistryComponents(),
 		// 自动按需引入依赖
@@ -47,7 +47,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 	vitePlugins.push(windiCSS())
 
 	// vite-plugin-html
-	vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
+	// vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
 
 	// vite-plugin-svg-icons
 	vitePlugins.push(ConfigSvgIconsPlugin(isBuild))

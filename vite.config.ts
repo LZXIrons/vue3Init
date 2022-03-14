@@ -13,7 +13,7 @@ function resovePath(paths: string) {
 const externals = {
 	// vue: 'Vue',
 	// 'vue-router': 'VueRouter',
-	// vuex: 'Vuex',
+	// vuex: 'Vuex'
 	// pinia: 'pinia',
 	// axios: 'axios',
 	// 'element-ui': 'ELEMENT',
@@ -62,10 +62,11 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				'@components': resovePath('src/components'),
 				'@config': resovePath('config/'),
 				'@utils': resovePath('src/utils'),
-				'@api': resovePath('src/api'),
-				// 'vue': 'https://esm.sh/vue@3.0.6',
-				// 'vuex': 'https://esm.sh/vuex@4.0.2',
-				// 'vue-router': 'https://esm.sh/vue-router@4.0.10',
+				'@api': resovePath('src/api')
+				// vue: 'https://cdn.jsdelivr.net/npm/vue@3.0.6/dist/vue.esm-browser.js',
+				// vuex: 'https://cdn.jsdelivr.net/npm/vuex@4.0.2/dist/vuex.esm-browser.prod.js',
+				// 'vue-router':
+				// 	'https://cdn.jsdelivr.net/npm/vue-router@4.0.14/dist/vue-router.esm-browser.js'
 				// 'ant-design-vue': 'https://esm.sh/ant-design-vue@next',
 			}
 		},
@@ -128,12 +129,10 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 			include: [
 				'vue',
 				'vue-router',
-				'@vueuse/core',
+				'@vueuse/core'
 				// '@vueuse/head',
 			],
-			exclude: [
-				'vue-demi',
-			]
+			exclude: ['vue-demi']
 		}
 	}
 })

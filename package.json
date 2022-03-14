@@ -35,7 +35,7 @@
     "vue-clipboard3": "^1.0.1",
     "vue-demi": "^0.12.1",
     "vue-router": "^4.0.11",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",

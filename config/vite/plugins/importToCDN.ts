@@ -21,7 +21,7 @@ export const importToCDNPRO = () => {
 			// autoComplete('axios'),
 			// autoComplete('lodash'),
 			// autoComplete('vue'),
-			// autoComplete('@vueuse/core')
+			// autoComplete('@vueuse/core'),
 			// {
 			// 	name: 'vue-router',
 			// 	var: 'VueRouter',
@@ -31,7 +31,7 @@ export const importToCDNPRO = () => {
 			// 	name: 'vuex',
 			// 	var: 'Vuex',
 			// 	path: 'https://cdn.jsdelivr.net/npm/vuex@4.0.2/dist/vuex.global.prod.js'
-			// },
+			// }
 			// {
 			// 	name: 'vue-demi',
 			// 	var: 'vue-demi',
