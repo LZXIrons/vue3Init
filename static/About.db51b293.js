@@ -1,0 +1,1 @@
+import"./vue.5d082aef.js";import{_ as e}from"./index.41d2e4e2.js";import{x as r}from"./@vue.0aef26c7.js";import"./vue-router.b0bcfb65.js";import"./vuex.a7230e05.js";import"./lib-flexible.c3953932.js";var o=e(r({components:{}}),[["render",function(e,r,o,t,i,s){return"about"}]]);export{o as default};
