@@ -28,10 +28,10 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 		vueJsx(),
 		// 生产环境使用CDN
 		importToCDNPRO(),
-		// 自动按需引入组件
-		AutoRegistryComponents(),
-		// 自动按需引入依赖
-		AutoImportDeps(),
+		// // 自动按需引入组件
+		// AutoRegistryComponents(),
+		// // 自动按需引入依赖
+		// AutoImportDeps(),
 		// 自动生成路由
 		ConfigPagesPlugin(),
 		// 开启.gz压缩  rollup-plugin-gzip

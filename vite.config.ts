@@ -126,13 +126,13 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 		define: { 'process.env': {} },
 		// 引入第三方配置
 		optimizeDeps: {
-			include: [
-				'vue',
-				'vue-router',
-				'@vueuse/core'
-				// '@vueuse/head',
-			],
-			exclude: ['vue-demi']
+			// include: [
+			// 	'vue',
+			// 	'vue-router',
+			// 	'@vueuse/core'
+			// 	// '@vueuse/head',
+			// ],
+			// exclude: ['vue-demi']
 		}
 	}
 })

@@ -1,8 +1,9 @@
 import { createStore } from 'vuex'
 
-export default createStore({
+export const testStore = createStore({
 	state: {
-		test: 1
+		test: 1,
+		theme: 'dark'
 	},
 	getters: {
 		getTest(state) {
