@@ -30,12 +30,12 @@ export const importToCDNPRO = () => {
 			},
 			{
 				name: 'vue-demi',
-				var: 'vue-demi',
+				var: 'VueDemi',
 				path: 'https://cdn.jsdelivr.net/npm/vue-demi@0.12.1/lib/index.iife.min.js'
 			},
 			{
 				name: 'pinia',
-				var: 'pinia',
+				var: 'Pinia',
 				path: 'https://cdn.jsdelivr.net/npm/pinia@2.0.11/dist/pinia.iife.min.js'
 			},
 			{

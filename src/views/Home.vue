@@ -3,15 +3,15 @@
 		class="text-red-400 dark:text-green-400 flex justify-center items-center"
 	>
 		<button @click="goabout">{{ title }}</button>
-		<Button type="primary" @click="handleShow">接口请求</Button>
-		<Button type="primary" @click="toggleTheme">样式切换</Button>
+		<van-button type="primary" @click="handleShow">接口请求</van-button>
+		<van-button type="primary" @click="toggleTheme">样式切换</van-button>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import { findGoodsDetail, wbApi } from '@/api/test'
-import { Button } from 'vant'
-import { testStore } from '@/store/index'
+// import { testStore } from '@/store/index'
+import { testStore } from '@/store/pinia'
 import { useRouter } from 'vue-router'
 import { useDark, useToggle } from '@vueuse/core'
 import {
@@ -28,9 +28,9 @@ const router = useRouter()
 const title = '哈哈哈'
 const isDark = useDark()
 const toggleTheme = useToggle(isDark)
-const appStore = testStore
+const appStore = testStore()
 const theme = computed(() => {
-	return appStore.state.theme
+	return appStore.theme
 })
 watch(theme, (n, o) => {
 	console.log(n, o)

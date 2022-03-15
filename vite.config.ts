@@ -63,11 +63,6 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				'@config': resovePath('config/'),
 				'@utils': resovePath('src/utils'),
 				'@api': resovePath('src/api')
-				// vue: 'https://cdn.jsdelivr.net/npm/vue@3.0.6/dist/vue.esm-browser.js',
-				// vuex: 'https://cdn.jsdelivr.net/npm/vuex@4.0.2/dist/vuex.esm-browser.prod.js',
-				// 'vue-router':
-				// 	'https://cdn.jsdelivr.net/npm/vue-router@4.0.14/dist/vue-router.esm-browser.js'
-				// 'ant-design-vue': 'https://esm.sh/ant-design-vue@next',
 			}
 		},
 		css: {

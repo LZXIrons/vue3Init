@@ -5,7 +5,4 @@ declare interface Window {
 	Aliplayer: any
 	AliyunUpload: any
 	vant: any
-	Vue: any
-	Vuex: any
-	VueRouter: any
 }
