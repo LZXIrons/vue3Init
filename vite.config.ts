@@ -1,7 +1,5 @@
 import { defineConfig, ConfigEnv, loadEnv } from 'vite'
 import { createVitePlugins } from './config/vite/plugins'
-import commonjs from 'rollup-plugin-commonjs'
-import externalGlobals from 'rollup-plugin-external-globals'
 
 // 路径处理模块
 import path from 'path'
@@ -10,26 +8,13 @@ function resovePath(paths: string) {
 	// 如何 __dirname 找不到 需要 yarn add @types/node --save-dev
 	return path.resolve(__dirname, paths)
 }
-const externals = {
-	// vue: 'Vue',
-	// 'vue-router': 'VueRouter',
-	// vuex: 'Vuex'
-	// pinia: 'pinia',
-	// axios: 'axios',
-	// 'element-ui': 'ELEMENT',
-	// lodash: '_',
-	// echarts: 'echarts',
-	// 'v-charts': 'VeIndex',
-	// qs: 'Qs',
-	// 'ant-design-vue': 'antd',
-	// vant: 'vant'
-}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
 	const ViteEnv = loadEnv(mode, __dirname)
 	const isBuild = command === 'build'
 	console.log('ViteEnv.VITE_APP_RIG_API', ViteEnv)
-	console.log('process', process.env.NODE_ENV)
+	console.log('process', process.env.UNI_PLATFORM)
 	return {
 		server: {
 			host: '0.0.0.0',
@@ -102,8 +87,6 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				}
 			},
 			rollupOptions: {
-				external: Object.keys(externals),
-				plugins: [commonjs(), externalGlobals(externals)],
 				treeshake: false,
 				output: {
 					manualChunks(id) {

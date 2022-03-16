@@ -3,12 +3,10 @@
  * @description 封装plugins数组统一调用
  */
 import type { Plugin } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import uni from '@dcloudio/vite-plugin-uni'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 import windiCSS from 'vite-plugin-windicss'
-import { configHtmlPlugin } from './html'
-import { importToCDNPRO } from './importToCDN'
 import { ConfigSvgIconsPlugin } from './svgIcons'
 import { AutoRegistryComponents } from './component'
 import { AutoImportDeps } from './autoImport'
@@ -23,15 +21,13 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 	const { VITE_LEGACY } = viteEnv
 	const vitePlugins: (Plugin | Plugin[])[] = [
 		// vue支持
-		vue(),
+		uni(),
 		// JSX支持
 		vueJsx(),
-		// 生产环境使用CDN
-		importToCDNPRO(),
 		// // 自动按需引入组件
-		// AutoRegistryComponents(),
+		AutoRegistryComponents(),
 		// // 自动按需引入依赖
-		// AutoImportDeps(),
+		AutoImportDeps(),
 		// 自动生成路由
 		ConfigPagesPlugin(),
 		// 开启.gz压缩  rollup-plugin-gzip
@@ -45,9 +41,6 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 	VITE_LEGACY && isBuild && vitePlugins.push(legacy())
 	// vite-plugin-windicss
 	vitePlugins.push(windiCSS())
-
-	// vite-plugin-html
-	// vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
 
 	// vite-plugin-svg-icons
 	vitePlugins.push(ConfigSvgIconsPlugin(isBuild))

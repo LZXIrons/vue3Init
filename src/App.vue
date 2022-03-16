@@ -1,28 +1,15 @@
-<template>
-	<router-view />
-</template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-	name: 'App',
-	components: {}
+<script setup lang="ts">
+import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
+onLaunch(() => {
+	console.log('App Launch')
+})
+onShow(() => {
+	console.log('App Show')
+})
+onHide(() => {
+	console.log('App Hide')
 })
 </script>
-
-<style>
-#app {
-	/* margin-top: 60px; */
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	color: #2c3e50;
-	text-align: center;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-.dark .dark\:text-green-400 {
-	--tw-text-opacity: 1;
-
-	color: rgba(52, 211, 153, var(--tw-text-opacity));
-}
+<style lang="scss">
+@import 'uview-ui/index.scss';
 </style>
