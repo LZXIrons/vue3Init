@@ -15,7 +15,7 @@ export const wbApi = params =>
 	$post(
 		{
 			url: proxyRigUrl + '/wxmp/artisan/shopDetail/v3/getShopDetail',
-			params,
+			data: params,
 			headers: { gateway: true }
 		},
 		{ isLoad: false }

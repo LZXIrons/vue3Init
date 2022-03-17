@@ -52,12 +52,12 @@ const handleShow = async () => {
 }
 const init = async () => {
 	try {
-		const res = await findGoodsDetail({ id: 10367 })
-		// const res = await wbApi({
-		// 	latitude: '23.008041',
-		// 	longitude: '113.340155',
-		// 	shopCode: 815
-		// })
+		// const res = await findGoodsDetail({ id: 10367 })
+		const res = await wbApi({
+			latitude: '23.008041',
+			longitude: '113.340155',
+			shopCode: 815
+		})
 		console.log(res)
 	} catch (error) {
 		console.log('接口请求错误')

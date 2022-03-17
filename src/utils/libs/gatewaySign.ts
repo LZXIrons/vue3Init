@@ -5,8 +5,8 @@ import uuid from '../methods/uuid'
 import { objKeySort } from '../methods/format'
 import { AxiosRequestConfig } from 'axios'
 import { CommonDataEntity } from '@/entity/GatewaySign'
-import Cookies from 'js-cookie'
-const secret = process.env.VUE_APP_SECRET_KEY
+const secret = import.meta.env.VITE_APP_SECRET_KEY
+console.log('secret', secret)
 export default (request: AxiosRequestConfig) => {
 	const unixDate: number = Math.floor(Date.now() / 1000)
 	// 公共参数

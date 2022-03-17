@@ -11,8 +11,8 @@ import { TOKENID } from '@config/constant'
 // import { Toast } from 'vant'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'
-// const API_BASE_URL = import.meta.env.VITE_APP_RIG_API
-const API_BASE_URL = import.meta.env.VITE_APP_API
+// const API_BASE_URL = import.meta.env.VITE_APP_API
+const API_BASE_URL = import.meta.env.VITE_APP_RIG_API
 
 // 请求列表(防重复提交)
 const pending: Array<any> = [] //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
@@ -21,7 +21,7 @@ const axiosInstance = axios.create({
 	baseURL: API_BASE_URL,
 	headers: {
 		// `headers` 是即将被发送的自定义请求头
-		'Content-Type': 'application/x-www-form-urlencoded'
+		'content-type': 'application/x-www-form-urlencoded'
 	}
 })
 axios.defaults.adapter = mpAdapter
@@ -56,8 +56,8 @@ axiosInstance.interceptors.request.use(
 		})
 		config.headers = Object.assign({}, config.headers, {
 			reqTime,
-			sign: MD5(hash),
-			contentType
+			// sign: MD5(hash),
+			'content-type': contentType
 		})
 		const tokenId = Cookies.get(TOKENID) || ''
 		// gateway - 走网关的接口
