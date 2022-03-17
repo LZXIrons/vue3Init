@@ -42,6 +42,12 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 					rewrite: path =>
 						path.replace(/^\/zhongzhengapi\/rigPortal\//, '/rigPortal/')
 				},
+				'/mjwatchapi/rigPortal/': {
+					target: ViteEnv.VITE_APP_RIG_API,
+					changeOrigin: true,
+					rewrite: path =>
+						path.replace(/^\/mjwatchapi\/rigPortal\//, '/rigPortal/')
+				},
 				'/zhongzhengapi/manageapi/': {
 					target: ViteEnv.VITE_APP_MANAGE_API,
 					changeOrigin: true,
