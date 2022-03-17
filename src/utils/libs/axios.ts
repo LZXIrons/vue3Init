@@ -21,7 +21,7 @@ const axiosInstance = axios.create({
 	timeout: 10000, // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 	headers: {
 		// `headers` 是即将被发送的自定义请求头
-		// 'Content-Type': 'application/x-www-form-urlencoded'
+		'content-type': 'application/x-www-form-urlencoded'
 	}
 })
 
@@ -57,7 +57,7 @@ axiosInstance.interceptors.request.use(
 		config.headers = Object.assign({}, config.headers, {
 			reqTime,
 			sign: MD5(hash),
-			contentType
+			'content-type': contentType
 		})
 		const tokenId = Cookies.get(TOKENID) || ''
 		// gateway - 走网关的接口
