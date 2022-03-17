@@ -6,9 +6,9 @@ import { createPinia } from 'pinia'
 // import uView from 'uview-ui'
 
 import '@/assets/css/reset.css'
-import 'virtual:windi-base.css'
-import 'virtual:windi-components.css'
-import 'virtual:windi-utilities.css'
+// import 'virtual:windi-base.css'
+// import 'virtual:windi-components.css'
+// import 'virtual:windi-utilities.css'
 
 export function createApp() {
 	const app = createSSRApp(App)

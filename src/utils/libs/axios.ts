@@ -1,30 +1,30 @@
 // import QS from 'qs' // 引入qs模块，用来序列化post类型的数据
-// import mpAdapter from 'axios-miniprogram-adapter'
 // import $Func from './function.js'
 // import $Tips from './tip'
-// axios.defaults.adapter = mpAdapter
 // import { $post } from '@/utils/libs/test'
 // import type { RequestOptions } from '#/axios'
 import signUtils from '@/utils/libs/gatewaySign'
 import axios, { AxiosRequestConfig } from 'axios'
+import mpAdapter from 'axios-miniprogram-adapter'
 import Cookies from 'js-cookie'
 import { TOKENID } from '@config/constant'
-import { Toast } from 'vant'
+// import { Toast } from 'vant'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'
-const API_BASE_URL = ''
+// const API_BASE_URL = import.meta.env.VITE_APP_RIG_API
+const API_BASE_URL = import.meta.env.VITE_APP_API
+
 // 请求列表(防重复提交)
 const pending: Array<any> = [] //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 const cancelToken = axios.CancelToken
 const axiosInstance = axios.create({
 	baseURL: API_BASE_URL,
-	timeout: 10000, // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 	headers: {
 		// `headers` 是即将被发送的自定义请求头
 		'Content-Type': 'application/x-www-form-urlencoded'
 	}
 })
-
+axios.defaults.adapter = mpAdapter
 const removePending = config => {
 	for (const p in pending) {
 		if (pending[p].u === config.url + '&' + config.method) {
@@ -102,10 +102,8 @@ const $http = <T>(
 ): Promise<T> => {
 	console.log('options', options)
 	if (options.isLoad) {
-		Toast.loading({
-			message: '加载中...',
-			duration: 0,
-			forbidClick: true
+		uni.showLoading({
+			title: '加载中'
 		})
 	}
 	return new Promise((resolve, reject) => {
@@ -115,15 +113,15 @@ const $http = <T>(
 				resolve(res.data)
 			})
 			.catch(err => {
-				Toast(err)
+				uni.showToast({
+					title: err,
+					icon: 'none',
+					duration: 2000
+				})
 				reject(err.data)
 			})
 		if (options.isLoad) {
-			Toast.loading({
-				message: '加载中...',
-				duration: 500,
-				forbidClick: true
-			})
+			uni.hideLoading()
 		}
 	})
 }

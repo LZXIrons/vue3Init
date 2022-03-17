@@ -38,7 +38,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 		ConfigRestartPlugin()
 	]
 	// @vitejs/plugin-legacy
-	VITE_LEGACY && isBuild && vitePlugins.push(legacy())
+	// VITE_LEGACY && isBuild && vitePlugins.push(legacy())
 	// vite-plugin-windicss
 	vitePlugins.push(windiCSS())
 

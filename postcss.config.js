@@ -25,7 +25,7 @@ module.exports = {
 			? [
 					// 使用postcss-class-name 包将小程序不支持的类名转换为支持的类名
 					require('postcss-class-rename')({
-						'dark\\': 'dark:',
+						'dark\\:': 'dark:',
 						'\\\\:': '--',
 						// "\\\\/": "--",
 						'\\\\.': '--',

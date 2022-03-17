@@ -2,9 +2,9 @@
 	<div
 		class="text-red-400 dark:text-green-400 flex justify-center items-center"
 	>
-		<button @click="goabout">{{ title }}</button>
-		<!-- <van-button type="primary" @click="handleShow">接口请求</van-button>
-		<van-button type="primary" @click="toggleTheme">样式切换</van-button> -->
+		<!-- <button @click="goabout">{{ title }}</button>
+		<button @click="handleShow">接口请求</button> -->
+		<!-- <van-button type="primary" @click="toggleTheme">样式切换</van-button> -->
 	</div>
 </template>
 
@@ -52,8 +52,13 @@ const handleShow = async () => {
 }
 const init = async () => {
 	try {
-		// const res = await wbApi()
-		// console.log(res)
+		const res = await findGoodsDetail({ id: 10367 })
+		// const res = await wbApi({
+		// 	latitude: '23.008041',
+		// 	longitude: '113.340155',
+		// 	shopCode: 815
+		// })
+		console.log(res)
 	} catch (error) {
 		console.log('接口请求错误')
 	}

@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 					rewrite: path => path.replace(/^\/zhongzhengapi\/manageapi\//, '')
 				},
 				'^/api': {
-					target: ViteEnv.VITE_APP_RIG_API,
+					target: ViteEnv.VITE_APP_API,
 					changeOrigin: true,
 					rewrite: path => path.replace(/^\/api/, '')
 				}
@@ -82,7 +82,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 			sourcemap: false,
 			terserOptions: {
 				compress: {
-					drop_console: true, // 生产环境移除console
+					// drop_console: true, // 生产环境移除console
 					drop_debugger: true // 生产环境移除debugger
 				}
 			},

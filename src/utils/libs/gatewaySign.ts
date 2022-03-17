@@ -12,8 +12,8 @@ export default (request: AxiosRequestConfig) => {
 	// 公共参数
 	// eslint-disable-next-line no-prototype-builtins
 	const appData = {
-		app: 3, // 应用  3.万表二手表
-		os: 4 // 系统平台 :m
+		app: 2, // 应用  2.万表名匠
+		os: 5 // 系统平台 5:mp（小程序）
 	}
 	const commonData: CommonDataEntity = Object.assign(
 		{
@@ -25,9 +25,10 @@ export default (request: AxiosRequestConfig) => {
 	)
 	// TOKENID
 	// const needToken = { 'wb-token': '67505d34-c462-4874-81eb-cc7d210cc771' }
-	const needToken = Cookies.get(TOKENID)
+	const tokenID = uni.getStorageSync('tokenID')
+	const needToken = tokenID
 		? {
-				'wb-token': Cookies.get(TOKENID) || request.headers!['wb-token']
+				'wb-token': tokenID || request.headers!['wb-token']
 		  }
 		: {}
 
