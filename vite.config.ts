@@ -26,7 +26,7 @@ const externals = {
 }
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
-	const ViteEnv = loadEnv(mode, __dirname)
+	const ViteEnv: ViteEnvConfig = loadEnv(mode, __dirname)
 	const isBuild = command === 'build'
 	console.log('ViteEnv.VITE_APP_RIG_API', ViteEnv)
 	console.log('process', process.env.NODE_ENV)

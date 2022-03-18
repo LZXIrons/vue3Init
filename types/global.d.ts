@@ -1,7 +1,7 @@
 declare global {
-	interface ViteEnv {
+	interface ViteEnvConfig extends Readonly<Record<string, string>> {
 		VITE_GLOB_APP_TITLE?: string
-		VITE_LEGACY: false
+		VITE_LEGACY?: false
 	}
 }
 export {}

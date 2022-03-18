@@ -6,7 +6,8 @@
 // import { $post } from '@/utils/libs/test'
 // import type { RequestOptions } from '#/axios'
 import signUtils from '@/utils/libs/gatewaySign'
-import axios, { AxiosRequestConfig } from 'axios'
+import type { RequestOptions, NewAxiosRequestConfig } from '#/axios'
+import axios from 'axios'
 import Cookies from 'js-cookie'
 import { TOKENID } from '@config/constant'
 import { Toast } from 'vant'
@@ -37,7 +38,7 @@ const removePending = config => {
 
 // 请求拦截器
 axiosInstance.interceptors.request.use(
-	(config: AxiosRequestConfig) => {
+	(config: NewAxiosRequestConfig) => {
 		// 发送请求之前你可以在这里对config做一些事情
 		console.log('请求被拦截到了，加点料', config)
 		let contentType
@@ -97,7 +98,7 @@ axiosInstance.interceptors.response.use(
 	}
 )
 const $http = <T>(
-	config: AxiosRequestConfig,
+	config: NewAxiosRequestConfig,
 	options: RequestOptions
 ): Promise<T> => {
 	console.log('options', options)
@@ -129,26 +130,26 @@ const $http = <T>(
 }
 
 const $get = <T>(
-	config: AxiosRequestConfig,
+	config: NewAxiosRequestConfig,
 	options: RequestOptions
 ): Promise<T> => {
 	return $http({ ...config, method: 'GET' }, options)
 }
 
 const $post = <T>(
-	config: AxiosRequestConfig,
+	config: NewAxiosRequestConfig,
 	options: RequestOptions
 ): Promise<T> => {
 	return $http({ ...config, method: 'POST' }, options)
 }
 const $put = <T>(
-	config: AxiosRequestConfig,
+	config: NewAxiosRequestConfig,
 	options: RequestOptions
 ): Promise<T> => {
 	return $http({ ...config, method: 'PUT' }, options)
 }
 const $delete = <T>(
-	config: AxiosRequestConfig,
+	config: NewAxiosRequestConfig,
 	options: RequestOptions
 ): Promise<T> => {
 	return $http({ ...config, method: 'DELETE' }, options)
