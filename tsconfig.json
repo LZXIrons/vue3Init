@@ -35,7 +35,12 @@
       "@api/*": [
         "src/api/*"
       ]
-    }
+    },
+    "types": [
+      // 添加 weixin 的声明
+      "@types/weixin-app",
+      "@dcloudio/types/uni-app"
+    ]
 	},
 	"include": [
     "tests/**/*.ts",

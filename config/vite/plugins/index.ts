@@ -17,7 +17,7 @@ import { ConfigPagesPlugin } from './pages'
 import { ConfigMarkDownPlugin } from './markdown'
 import { ConfigRestartPlugin } from './restart'
 
-export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
+export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 	const { VITE_LEGACY } = viteEnv
 	const vitePlugins: (Plugin | Plugin[])[] = [
 		// vue支持

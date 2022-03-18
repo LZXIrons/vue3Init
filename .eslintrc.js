@@ -58,6 +58,8 @@ module.exports = {
 		defineProps: 'readonly',
 		defineEmits: 'readonly',
 		defineComponent: 'readonly',
-		defineExpose: 'readonly'
+		defineExpose: 'readonly',
+		wx: 'readonly',
+		uni: 'readonly'
 	}
 }

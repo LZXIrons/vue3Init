@@ -3,6 +3,4 @@ declare interface Window {
 	WVJBCallbacks: any
 	Aliplayer: any
 	AliyunUpload: any
-	vant: any
-	uni: any
 }

@@ -1908,6 +1908,11 @@
   resolved "https://registry.npmmirror.com/@types/unist/-/unist-2.0.6.tgz"
   integrity sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==
 
+"@types/weixin-app@^2.9.3":
+  version "2.9.3"
+  resolved "https://registry.npmmirror.com/@types/weixin-app/-/weixin-app-2.9.3.tgz#acf5cb7d396dea73c1cba1e45ee25b1675d4f860"
+  integrity sha512-THcFm2f1koYkdE9HYeh6gg0Q2Tu9IkNoxzBNr40MAfZy6EqjHaND2GqYl4Ze1RkosAbMXfBlCs1kvJfMgKDFVw==
+
 "@typescript-eslint/eslint-plugin@^4.31.0":
   version "4.33.0"
   resolved "https://registry.npmmirror.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.33.0.tgz"
