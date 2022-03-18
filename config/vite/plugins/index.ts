@@ -16,12 +16,18 @@ import { ConfigCompressPlugin } from './compress'
 import { ConfigPagesPlugin } from './pages'
 import { ConfigMarkDownPlugin } from './markdown'
 import { ConfigRestartPlugin } from './restart'
+import {
+	ViteWeappTailwindcssPlugin as vwt,
+	postcssWeappTailwindcssRename
+} from 'weapp-tailwindcss-webpack-plugin'
 
 export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 	const { VITE_LEGACY } = viteEnv
 	const vitePlugins: (Plugin | Plugin[])[] = [
 		// vue支持
 		uni(),
+		vwt(),
+		postcssWeappTailwindcssRename(),
 		// JSX支持
 		vueJsx(),
 		// // 自动按需引入组件
@@ -29,7 +35,7 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 		// // 自动按需引入依赖
 		AutoImportDeps(),
 		// 自动生成路由
-		ConfigPagesPlugin(),
+		// ConfigPagesPlugin(),
 		// 开启.gz压缩  rollup-plugin-gzip
 		ConfigCompressPlugin(),
 		//支持markdown
