@@ -1,46 +1,28 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import tdkMethod from './tdk'
-
-const componentPage = {
-	home: () => import('@/views/Home.vue'),
-	about: () => import('@/views/About.vue'),
-	test: () => import('@/views/test.vue')
-}
-
-const routes: Array<RouteRecordRaw> = [
+import { setupLayouts } from 'virtual:generated-layouts'
+import generatedRoutes from 'virtual:generated-pages'
+// 固定路由
+let constantRoutes: Array<RouteRecordRaw> = [
 	{
-		path: '/',
-		name: 'Home',
+		path: '/login',
+		name: 'login',
+		component: () => import('@/views/login.vue'),
 		meta: {
-			title: 'Home'
-		},
-		component: componentPage.home
-	},
-	{
-		path: '/about',
-		name: 'About',
-		meta: {
-			title: 'About'
-		},
-		component: componentPage.about
-	},
-	{
-		path: '/test',
-		name: 'Test',
-		meta: {
-			title: 'Test'
-		},
-		component: componentPage.test
+			title: '登录'
+		}
 	}
 ]
-
+constantRoutes = generatedRoutes.filter(item => {
+	return item.meta?.enabled !== false && item.meta?.constant === true
+})
 const router = createRouter({
 	history: createWebHistory(),
-	routes
+	routes: constantRoutes
 })
 // tdk
 router.beforeEach((to, from, next) => {
-	console.log('router.beforeEach---------', componentPage.home)
+	console.log('router.beforeEach---------', to)
 	tdkMethod(to, from, next)
 })
 export default router

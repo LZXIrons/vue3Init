@@ -18,8 +18,10 @@ import { ConfigCompressPlugin } from './compress'
 import { ConfigPagesPlugin } from './pages'
 import { ConfigMarkDownPlugin } from './markdown'
 import { ConfigRestartPlugin } from './restart'
+import createSpritesmith from './spritesmith'
+import createLayouts from './layouts'
 
-export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
+export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 	const { VITE_LEGACY } = viteEnv
 	const vitePlugins: (Plugin | Plugin[])[] = [
 		// vue支持
@@ -39,7 +41,8 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 		//支持markdown
 		ConfigMarkDownPlugin(),
 		// 监听配置文件改动重启
-		ConfigRestartPlugin()
+		ConfigRestartPlugin(),
+		createLayouts()
 	]
 	// @vitejs/plugin-legacy
 	VITE_LEGACY && isBuild && vitePlugins.push(legacy())
@@ -57,6 +60,8 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 
 	// rollup-plugin-visualizer
 	// vitePlugins.push(ConfigVisualizerConfig())
+
+	vitePlugins.push(createSpritesmith(isBuild))
 
 	return vitePlugins
 }

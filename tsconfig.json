@@ -35,7 +35,8 @@
       "@api/*": [
         "src/api/*"
       ]
-    }
+    },
+		"types": ["vite-plugin-vue-layouts/client"]
 	},
 	"include": [
     "tests/**/*.ts",

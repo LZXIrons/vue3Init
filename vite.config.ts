@@ -29,7 +29,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 	const ViteEnv: ViteEnvConfig = loadEnv(mode, __dirname)
 	const isBuild = command === 'build'
 	console.log('ViteEnv.VITE_APP_RIG_API', ViteEnv)
-	console.log('process', process.env.NODE_ENV)
+	console.log('isBuild', isBuild)
 	return {
 		server: {
 			host: '0.0.0.0',

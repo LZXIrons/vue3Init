@@ -45,11 +45,17 @@ export const importToCDNPRO = () => {
 				css: 'https://cdn.jsdelivr.net/npm/vant@3.4.6/lib/index.css'
 			},
 			{
-				name: 'ant-design-vue',
-				var: 'antd',
-				path: 'https://cdn.jsdelivr.net/npm/ant-design-vue@2.2.0-beta.6/dist/antd.js',
-				css: 'https://cdn.jsdelivr.net/npm/ant-design-vue@2.2.0-beta.6/dist/antd.min.css'
+				name: 'element-plus-vue',
+				var: 'element-plus',
+				path: 'https://cdn.jsdelivr.net/npm/vue@next',
+				css: 'https://cdn.jsdelivr.net/npm/element-plus/dist/index.css'
 			}
+			// {
+			// 	name: 'ant-design-vue',
+			// 	var: 'antd',
+			// 	path: 'https://cdn.jsdelivr.net/npm/ant-design-vue@2.2.0-beta.6/dist/antd.js',
+			// 	css: 'https://cdn.jsdelivr.net/npm/ant-design-vue@2.2.0-beta.6/dist/antd.min.css'
+			// }
 		]
 	})
 }

@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="text-red-400 dark:text-green-400 flex justify-center items-center"
+		class="text-red-400 home dark:text-green-400 flex justify-center items-center"
 	>
 		<button @click="goabout">{{ title }}</button>
 		<van-button type="primary" @click="handleShow">接口请求</van-button>
@@ -21,9 +21,9 @@ import {
 	watchEffect,
 	onMounted,
 	ref,
-	reactive
+	reactive,
+	isRef
 } from 'vue'
-
 const router = useRouter()
 const title = '哈哈哈'
 const isDark = useDark()
@@ -74,7 +74,7 @@ onMounted(() => {
 	init()
 })
 </script>
-<style lang="scss">
+<style lang="less">
 .home {
 	// @apply font-bold py-2 px-4 rounded text-[30px];
 }

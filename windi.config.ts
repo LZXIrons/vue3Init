@@ -18,6 +18,11 @@ export default defineConfig({
 				lg: '992px',
 				xl: '1200px',
 				'2xl': '1600px'
+			},
+			maxWidth: {
+				'1/4': '25%',
+				'1/2': '50%',
+				'3/4': '75%'
 			}
 		}
 	},
