@@ -1,14 +1,28 @@
 <template>
 	<div class="login-box">
 		<el-form
+			class="w-450px pt-50px pl-35px pr-35px pb-30px"
 			:model="form"
 			ref="form"
 			label-width="80px"
 			:inline="false"
-			size="normal"
+			size="default"
+			label-position="top"
 		>
-			<el-form-item label="">
-				<el-input v-model="form.name"></el-input>
+			<div class="form-title">管理后台</div>
+			<el-form-item size="large">
+				<el-input v-model="form.name">
+					<template #prefix>
+						<svg-icon name="user" />
+					</template>
+				</el-input>
+			</el-form-item>
+			<el-form-item size="large">
+				<el-input v-model="form.name">
+					<template #prefix>
+						<svg-icon name="password" />
+					</template>
+				</el-input>
 			</el-form-item>
 			<el-form-item>
 				<el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -22,7 +36,7 @@
 import { reactive } from 'vue'
 
 const form = reactive({
-	name: ''
+	name: '11'
 })
 const onSubmit = () => {
 	console.log('object')
@@ -41,6 +55,16 @@ const onSubmit = () => {
 	border-radius: 10px;
 	box-shadow: 0 0 5px #999;
 	transform: translateX(-50%) translateY(-50%);
+	.form-title {
+		margin: 0 auto 30px;
+		overflow: hidden;
+		font-size: 22px;
+		font-weight: bold;
+		color: #666;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }
 </style>
 <route>
