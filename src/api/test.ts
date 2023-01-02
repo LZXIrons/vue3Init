@@ -2,8 +2,7 @@ import { $post, $get } from '@/utils/libs/axios'
 // import wxRequest from '../utils/wxRequest.js'
 // import { proxyRigUrl } from '@config/constant'
 // const proxyRigUrl = '/zhongzhengapi/rigPortal'
-// const proxyRigUrl = '/api'
-const proxyRigUrl = '/mjwatchapi/rigPortal'
+const proxyRigUrl = '/api'
 //区域接口
 export const findGoodsDetail = params =>
 	$post(

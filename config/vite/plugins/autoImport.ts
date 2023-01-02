@@ -3,6 +3,7 @@
  * @description 按需加载，自动引入
  */
 import AutoImport from 'unplugin-auto-import/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 export const AutoImportDeps = () => {
 	return AutoImport({
 		dts: 'src/auto-imports.d.ts',
@@ -13,6 +14,7 @@ export const AutoImportDeps = () => {
 			enabled: true, // Default `false`
 			filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
 			globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-		}
+		},
+		resolvers: [ElementPlusResolver()]
 	})
 }

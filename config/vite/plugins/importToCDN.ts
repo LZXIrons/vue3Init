@@ -13,11 +13,6 @@ export const importToCDNPRO = () => {
 			autoComplete('vue'),
 			autoComplete('@vueuse/shared'),
 			autoComplete('@vueuse/core'),
-			// {
-			// 	name: 'vue',
-			// 	var: 'vue',
-			// 	path: 'https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js'
-			// },
 			{
 				name: 'vue-router',
 				var: 'VueRouter',

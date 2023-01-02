@@ -29,11 +29,11 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 		// JSX支持
 		vueJsx(),
 		// 生产环境使用CDN
-		importToCDNPRO(),
-		// // 自动按需引入组件
-		// AutoRegistryComponents(),
-		// // 自动按需引入依赖
-		// AutoImportDeps(),
+		// importToCDNPRO(),
+		// 自动按需引入组件
+		AutoRegistryComponents(),
+		// 自动按需引入依赖
+		AutoImportDeps(),
 		// 自动生成路由
 		ConfigPagesPlugin(),
 		// 开启.gz压缩  rollup-plugin-gzip
@@ -59,7 +59,7 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 	vitePlugins.push(ConfigMockPlugin(isBuild))
 
 	// rollup-plugin-visualizer
-	// vitePlugins.push(ConfigVisualizerConfig())
+	vitePlugins.push(ConfigVisualizerConfig())
 
 	vitePlugins.push(createSpritesmith(isBuild))
 

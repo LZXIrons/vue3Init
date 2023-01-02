@@ -1,7 +1,5 @@
 import { defineConfig, ConfigEnv, loadEnv } from 'vite'
 import { createVitePlugins } from './config/vite/plugins'
-import commonjs from 'rollup-plugin-commonjs'
-import externalGlobals from 'rollup-plugin-external-globals'
 
 // 路径处理模块
 import path from 'path'
@@ -10,20 +8,7 @@ function resovePath(paths: string) {
 	// 如何 __dirname 找不到 需要 yarn add @types/node --save-dev
 	return path.resolve(__dirname, paths)
 }
-const externals = {
-	// vue: 'Vue',
-	// 'vue-router': 'VueRouter',
-	// vuex: 'Vuex'
-	// pinia: 'pinia',
-	// axios: 'axios',
-	// 'element-ui': 'ELEMENT',
-	// lodash: '_',
-	// echarts: 'echarts',
-	// 'v-charts': 'VeIndex',
-	// qs: 'Qs',
-	// 'ant-design-vue': 'antd',
-	// vant: 'vant'
-}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv) => {
 	const ViteEnv: ViteEnvConfig = loadEnv(mode, __dirname)
@@ -54,9 +39,9 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 					rewrite: path => path.replace(/^\/zhongzhengapi\/manageapi\//, '')
 				},
 				'^/api': {
-					target: ViteEnv.VITE_APP_RIG_API,
+					target: ViteEnv.VITE_APP_API,
 					changeOrigin: true,
-					rewrite: path => path.replace(/^\/api/, '')
+					rewrite: path => path.replace(/^\/api/, '/pw-weapp-api/')
 				}
 			}
 		},
@@ -107,22 +92,6 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 					drop_debugger: true // 生产环境移除debugger
 				}
 			},
-			rollupOptions: {
-				external: Object.keys(externals),
-				plugins: [commonjs(), externalGlobals(externals)],
-				treeshake: false,
-				output: {
-					manualChunks(id) {
-						if (id.includes('node_modules')) {
-							return id
-								.toString()
-								.split('node_modules/')[1]
-								.split('/')[0]
-								.toString()
-						}
-					}
-				}
-			}
 		},
 		define: { 'process.env': {} },
 		// 引入第三方配置

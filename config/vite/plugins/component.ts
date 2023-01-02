@@ -5,7 +5,7 @@
 import Components from 'unplugin-vue-components/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import {
-	ArcoResolver, // arcoDesign
+	ElementPlusResolver, // ElementPlus
 	VueUseComponentsResolver,
 	AntDesignVueResolver, // AntDesign
 	VantResolver // vant
@@ -23,13 +23,13 @@ export const AutoRegistryComponents = () => {
 		include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 		exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
 		resolvers: [
-			IconsResolver({
-				componentPrefix: ''
-			}),
 			// AntDesignVueResolver(),
 			VantResolver(),
-			ArcoResolver({ importStyle: 'less' }),
+			ElementPlusResolver(),
 			VueUseComponentsResolver()
+			// IconsResolver({
+			// 	componentPrefix: ''
+			// })
 		]
 	})
 }

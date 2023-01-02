@@ -1,3 +1,7 @@
+<route lang="yaml">
+meta:
+  layout: home
+</route>
 <template>
 	<div
 		class="text-red-400 home dark:text-green-400 flex justify-center items-center"
@@ -9,21 +13,11 @@
 </template>
 
 <script lang="ts" setup>
-import { findGoodsDetail, wbApi } from '@/api/test'
-// import { testStore } from '@/store/index'
+import { findGoodsDetail } from '@/api/test'
 import { testStore } from '@/store/pinia'
 import { useRouter } from 'vue-router'
 import { useDark, useToggle } from '@vueuse/core'
-import {
-	defineComponent,
-	computed,
-	watch,
-	watchEffect,
-	onMounted,
-	ref,
-	reactive,
-	isRef
-} from 'vue'
+// import { computed, watch, watchEffect, onMounted, ref, reactive } from 'vue'
 const router = useRouter()
 const title = '哈哈哈'
 const isDark = useDark()
@@ -51,15 +45,14 @@ const handleShow = async () => {
 }
 const init = async () => {
 	try {
-		const res = await wbApi({
-			latitude: '23.008041',
-			longitude: '113.340155',
-			shopCode: 815
+		const res = await findGoodsDetail({
+			id: 10367
+			// 	actid: 111551188
 		})
+		console.log('res', res)
 		// const res = await findGoodsDetail({
 		// 	id: 10367
 		// })
-		console.log(res)
 	} catch (error) {
 		console.log('接口请求错误')
 	}
@@ -79,3 +72,12 @@ onMounted(() => {
 	// @apply font-bold py-2 px-4 rounded text-[30px];
 }
 </style>
+<route>
+	{
+			meta: {
+					title: "home",
+					constant: true,
+					layout: false
+			}
+	}
+	</route>

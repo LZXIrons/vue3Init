@@ -1,26 +1,25 @@
 <template>
 	<div class="login-box">
 		<el-form
-			class="w-450px pt-50px pl-35px pr-35px pb-30px"
 			:model="form"
-			ref="form"
-			label-width="80px"
 			:inline="false"
 			size="default"
+			label-width="80px"
 			label-position="top"
+			class="w-450px pt-50px pl-35px pr-35px pb-30px"
 		>
 			<div class="form-title">管理后台</div>
 			<el-form-item size="large">
 				<el-input v-model="form.name">
 					<template #prefix>
-						<svg-icon name="user" />
+						<el-icon><User /></el-icon>
 					</template>
 				</el-input>
 			</el-form-item>
 			<el-form-item size="large">
-				<el-input v-model="form.name">
+				<el-input v-model="form.password">
 					<template #prefix>
-						<svg-icon name="password" />
+						<el-icon><View /></el-icon>
 					</template>
 				</el-input>
 			</el-form-item>
@@ -33,10 +32,11 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
-
+// do not use same name with ref
 const form = reactive({
-	name: '11'
+	name1: '',
+	name: '',
+	password: ''
 })
 const onSubmit = () => {
 	console.log('object')

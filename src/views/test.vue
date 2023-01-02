@@ -143,36 +143,6 @@ watchEffect(() => {
 watch(userInfo as any, (newName, oldName) => {
 	console.log('watch监听变量', newName, oldName)
 })
-
-// const theme = {
-// 	color: 'red'
-// }
-// inject
-// const provideTitle: any = inject('provideTitle')
-// console.log('---------provideTitle', provideTitle)
-
-// return {
-//   obj,
-//   userInfo,
-//   ...toRefs(userInfo), // 直接把里面内容到对象里面
-//   title,
-//   fullName,
-//   test,
-//   isShow,
-//   handleShow,
-//   handleTitle
-// }
-
-// import { provide, defineComponent, ref } from 'vue'
-// export default defineComponent({
-//   setup() {
-//     const title = ref('provideName')
-//     provide('provideTitle', title)
-//     return {
-//       title
-//     }
-//   },
-// })
 </script>
 
 <style scoped lang="less">
@@ -189,3 +159,12 @@ img {
 	color: red;
 }
 </style>
+<route>
+{
+    meta: {
+        title: "测试",
+        constant: true,
+        layout: false
+    }
+}
+</route>

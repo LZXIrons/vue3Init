@@ -1,4 +1,5 @@
 <template>
+	[Default Layout]
 	<Header></Header>
 	<router-view v-slot="{ Component, route }">
 		<transition name="main" mode="out-in" appear>

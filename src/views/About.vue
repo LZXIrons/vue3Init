@@ -1,4 +1,12 @@
-<template>about</template>
+<template>
+	<div>about</div>
+</template>
+<route>
+{
+	path:'/ab'
+}
+</route>
+
 <script lang="ts">
 import { defineComponent } from 'vue'
 
