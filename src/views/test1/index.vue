@@ -1,4 +1,4 @@
 <template>
-	<div>index页面</div>
+	<div>index首页面</div>
 </template>
 <script lang="ts" setup></script>
