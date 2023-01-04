@@ -1,3 +1,4 @@
+
 {
-  "rewrites": [{"source":  "/vercel_cicd/(.*)", "destination": "/vcapi"}]
+  "rewrites": [{ "source": "/:path*", "destination": "/index.html" }]
 }
