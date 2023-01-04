@@ -41,7 +41,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				'^/api': {
 					target: ViteEnv.VITE_APP_API,
 					changeOrigin: true,
-					rewrite: path => path.replace(/^\/api/, '/pw-weapp-api/')
+					rewrite: path => path.replace(/^\/api/, '/pw-weapp-api')
 				}
 			}
 		},
@@ -91,7 +91,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 					drop_console: true, // 生产环境移除console
 					drop_debugger: true // 生产环境移除debugger
 				}
-			},
+			}
 		},
 		define: { 'process.env': {} },
 		// 引入第三方配置
