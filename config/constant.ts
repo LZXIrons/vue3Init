@@ -50,11 +50,11 @@ export class Properties {
 //cdn
 export const CDN = {
 	js: [
-		'https://cdn.jsdelivr.net/npm/vue@3.2.45/index.mjs',
-		'https://cdn.jsdelivr.net/npm/vue-router@4.0.14/dist/vue-router.global.prod.js',
-		'https://cdn.jsdelivr.net/npm/vuex@4.0.2/dist/vuex.global.prod.js',
-		'https://cdn.jsdelivr.net/npm/vue-demi@0.12.1/lib/index.iife.min.js',
-		'https://cdn.jsdelivr.net/npm/pinia@2.0.11/dist/pinia.iife.min.js'
+		'https://unpkg.com/vue@3.2.6/dist/vue.global.prod.js',
+		'https://unpkg.com/vue-router@4.1.6/dist/vue-router.global.prod.js',
+		'https://unpkg.com/vuex@4.0.2/dist/vuex.global.prod.js',
+		'https://unpkg.com/vue-demi@0.12.1/lib/index.iife.js',
+		'https://unpkg.com/pinia@2.0.11/dist/pinia.iife.prod.js'
 	],
 	css: ['https://cdn.jsdelivr.net/npm/element-plus/dist/index.css']
 }
