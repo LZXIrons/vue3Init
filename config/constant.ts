@@ -4,7 +4,7 @@
  */
 
 // 应用名
-export const APP_TITLE = 'Fast-Vue31'
+export const APP_TITLE = 'CloudMusic'
 
 // 本地服务端口
 export const VITE_PORT = 3000
@@ -45,4 +45,16 @@ export class Properties {
 	static KEFU_ID = 'kfd'
 	static WBIAOID = 'wbiaoid'
 	static APP_SOURCE = 'app-source'
+}
+
+//cdn
+export const CDN = {
+	js: [
+		'https://cdn.jsdelivr.net/npm/vue@3.2.45/index.mjs',
+		'https://cdn.jsdelivr.net/npm/vue-router@4.0.14/dist/vue-router.global.prod.js',
+		'https://cdn.jsdelivr.net/npm/vuex@4.0.2/dist/vuex.global.prod.js',
+		'https://cdn.jsdelivr.net/npm/vue-demi@0.12.1/lib/index.iife.min.js',
+		'https://cdn.jsdelivr.net/npm/pinia@2.0.11/dist/pinia.iife.min.js'
+	],
+	css: ['https://cdn.jsdelivr.net/npm/element-plus/dist/index.css']
 }

@@ -87,7 +87,6 @@
     "unplugin-icons": "^0.13.0",
     "unplugin-vue-components": "^0.22.8",
     "vite": "^2.8.6",
-    "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.4.0",
     "vite-plugin-html": "^2.1.2",
     "vite-plugin-md": "^0.11.7",

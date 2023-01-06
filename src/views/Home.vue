@@ -13,7 +13,7 @@ meta:
 </template>
 
 <script lang="ts" setup>
-import { findGoodsDetail } from '@/api/test'
+import { findGoodsDetail } from '@http/test'
 import { testStore } from '@/store/pinia'
 import { useRouter } from 'vue-router'
 import { useDark, useToggle } from '@vueuse/core'

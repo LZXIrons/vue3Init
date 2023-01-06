@@ -32,8 +32,8 @@
       "@utils/*": [
         "src/utils/*"
       ],
-      "@api/*": [
-        "src/api/*"
+      "@http/*": [
+        "src/http/*"
       ]
     },
 		"types": [

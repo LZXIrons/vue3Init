@@ -53,7 +53,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 				'@components': resovePath('src/components'),
 				'@config': resovePath('config/'),
 				'@utils': resovePath('src/utils'),
-				'@api': resovePath('src/api')
+				'@http': resovePath('src/http')
 			}
 		},
 		css: {
@@ -91,17 +91,36 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 					drop_console: true, // 生产环境移除console
 					drop_debugger: true // 生产环境移除debugger
 				}
-			}
+			},
+			rollupOptions: {
+				external: ['vue', 'vue-router', 'vue-demi', 'pinia'],
+				manualChunks(id) {
+					if (id.includes('node_modules')) {
+						return id
+							.toString()
+							.split('node_modules/')[1]
+							.split('/')[0]
+							.toString()
+					}
+				},
+				output: {
+					chunkFileNames: 'static/js/[name]-[hash].js',
+					entryFileNames: 'static/js/[name]-[hash].js',
+					assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
+				}
+			} // 将打包后的资源分开
 		},
 		define: { 'process.env': {} },
 		// 引入第三方配置
 		optimizeDeps: {
-			// include: [
-			// 	'vue',
-			// 	'vue-router',
-			// 	'@vueuse/core'
-			// 	// '@vueuse/head',
-			// ],
+			include: [
+				'vue',
+				'vue-router',
+				'vue-demi',
+				'pinia'
+				// '@vueuse/core'
+				// '@vueuse/head',
+			]
 			// exclude: ['vue-demi']
 		}
 	}

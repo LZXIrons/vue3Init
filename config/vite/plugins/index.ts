@@ -2,13 +2,14 @@
  * @name createVitePlugins
  * @description 封装plugins数组统一调用
  */
+import externalGlobals from 'rollup-plugin-external-globals'
 import type { Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 import windiCSS from 'vite-plugin-windicss'
 import { configHtmlPlugin } from './html'
-import { importToCDNPRO } from './importToCDN'
+// import { importToCDNPRO } from './importToCDN'
 import { ConfigSvgIconsPlugin } from './svgIcons'
 import { AutoRegistryComponents } from './component'
 import { AutoImportDeps } from './autoImport'
@@ -28,8 +29,6 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 		vue(),
 		// JSX支持
 		vueJsx(),
-		// 生产环境使用CDN
-		// importToCDNPRO(),
 		// 自动按需引入组件
 		AutoRegistryComponents(),
 		// 自动按需引入依赖
@@ -43,6 +42,8 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 		// 监听配置文件改动重启
 		ConfigRestartPlugin(),
 		createLayouts()
+		// 生产环境使用CDN
+		// importToCDNPRO()
 	]
 	// @vitejs/plugin-legacy
 	VITE_LEGACY && isBuild && vitePlugins.push(legacy())
@@ -50,7 +51,7 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 	vitePlugins.push(windiCSS())
 
 	// vite-plugin-html
-	// vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
+	vitePlugins.push(configHtmlPlugin(isBuild))
 
 	// vite-plugin-svg-icons
 	vitePlugins.push(ConfigSvgIconsPlugin(isBuild))
@@ -62,6 +63,16 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 	vitePlugins.push(ConfigVisualizerConfig())
 
 	vitePlugins.push(createSpritesmith(isBuild))
+	vitePlugins.push({
+		...externalGlobals({
+			vue: 'Vue',
+			'vue-router': 'VueRouter',
+			'vue-demi': 'VueDemi',
+			pinia: 'Pinia'
+		}),
+		enforce: 'post',
+		apply: 'build'
+	})
 
 	return vitePlugins
 }

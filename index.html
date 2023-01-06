@@ -7,7 +7,15 @@
 		<meta name="force-rendering" content="webkit" />
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<title>home</title>
+		<title><% title %></title>
+		<!-- 使用CDN的CSS文件 -->
+    <% for (const i of cdnCss) { %>
+		<link href="<%= i %>" rel="stylesheet" />
+		<% } %>
+		<!-- 使用CDN的JS文件 -->
+		<% for (const i of cdnJs) { %>
+		<script src="<%= i %>" defer></script>
+		<% } %>
 
   </head>
   <body class="bg-white">

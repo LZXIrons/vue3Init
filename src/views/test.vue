@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 import Popup from '@/components/Popup/popup.vue'
-import { findGoodsDetail } from '@/api/test'
+import { findGoodsDetail } from '@http/test'
 import { TestClass, DefineClass, NewDefineClass } from '@/entity/demo'
 import { Toast } from 'vant'
 import { useCountDown } from '@vant/use'

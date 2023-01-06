@@ -6,16 +6,14 @@ import createHtmlPlugin from 'vite-plugin-html'
 
 // import { injectHtml } from 'vite-plugin-html'
 // import { APP_TITLE } from '@config/constant'
-import { APP_TITLE } from '../../constant'
+import { APP_TITLE, CDN } from '../../constant'
 
-export const configHtmlPlugin = (Env: ViteEnv, isBuild: boolean) => {
-	const { VITE_GLOB_APP_TITLE } = Env
+export const configHtmlPlugin = (isBuild: boolean) => {
 	return createHtmlPlugin({
 		inject: {
 			data: {
-				cdn: {
-					js: []
-				},
+				cdnCss: isBuild ? CDN.css : [],
+				cdnJs: isBuild ? CDN.js : [],
 				appEnv: isBuild ? 'pro' : 'dev',
 				title: APP_TITLE
 			}
