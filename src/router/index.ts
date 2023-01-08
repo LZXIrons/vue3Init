@@ -3,31 +3,7 @@ import tdkMethod from './tdk'
 import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 // 固定路由
-let constantRoutes: Array<RouteRecordRaw> = []
-// let constantRoutes: Array<RouteRecordRaw> = [
-// 	{
-// 		path: '/',
-// 		redirect: '/home',
-// 		component: () => import('@/views/Home1.vue'),
-// 		meta: {
-// 			title: 'home'
-// 		}
-// 	},
-// 	{
-// 		path: '/:all(.*)*',
-// 		name: 'notFound',
-// 		component: () => import('@/views/[...all].vue'),
-// 		meta: {
-// 			title: '找不到页面'
-// 		}
-// 	}
-// ]
-// constantRoutes = setupLayouts(
-// 	generatedRoutes.filter(item => {
-// 		return item.meta?.enabled !== false && item.meta?.constant === true
-// 	})
-// )
-constantRoutes = setupLayouts(generatedRoutes)
+const constantRoutes: Array<RouteRecordRaw> = setupLayouts(generatedRoutes)
 const router = createRouter({
 	history: createWebHistory(),
 	routes: constantRoutes

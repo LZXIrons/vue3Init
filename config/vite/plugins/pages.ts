@@ -5,10 +5,7 @@
 import Pages from 'vite-plugin-pages'
 export const ConfigPagesPlugin = () => {
 	return Pages({
-		dirs: [
-			{ dir: 'src/views', baseRoute: '' }
-			// { dir: 'src/views/test', baseRoute: 'views' }
-		],
+		dirs: [{ dir: 'src/views', baseRoute: '' }],
 		extensions: ['vue', 'md'],
 		exclude: ['**/components/*.vue']
 	})

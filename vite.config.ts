@@ -115,7 +115,7 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 		optimizeDeps: {
 			include: [
 				'vue',
-				'vue-router',
+				'vue-router'
 				// 'vue-demi',
 				// 'pinia'
 				// '@vueuse/core'

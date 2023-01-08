@@ -1,12 +1,5 @@
 <template>
 	<div>header</div>
 </template>
-<script lang="ts" setup>
-import { Button, Toast } from 'vant'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-
-
-</script>
+<script lang="ts" setup></script>
 <style lang="scss" scoped></style>

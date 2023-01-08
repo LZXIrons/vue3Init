@@ -3,17 +3,17 @@ module.exports = {
 	env: {
 		node: true
 	},
+	parser: 'vue-eslint-parser',
 	extends: [
 		'plugin:vue/vue3-essential',
-		'eslint:recommended',
 		'@vue/typescript/recommended',
-		'prettier',
 		'@vue/prettier',
 		'@vue/prettier/@typescript-eslint',
 		'./.eslintrc-auto-import.json'
 	],
-	plugins: ['prettier'],
+	plugins: ['@typescript-eslint'],
 	parserOptions: {
+		parser: '@typescript-eslint/parser',
 		ecmaVersion: 2020
 	},
 	rules: {

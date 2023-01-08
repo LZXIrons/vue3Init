@@ -3,13 +3,12 @@
  * @description 封装plugins数组统一调用
  */
 import externalGlobals from 'rollup-plugin-external-globals'
-import { PluginOption } from 'vite';
+import { PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 import windiCSS from 'vite-plugin-windicss'
 import { configHtmlPlugin } from './html'
-// import { importToCDNPRO } from './importToCDN'
 import { ConfigSvgIconsPlugin } from './svgIcons'
 import { AutoRegistryComponents } from './component'
 import { AutoImportDeps } from './autoImport'
@@ -17,7 +16,6 @@ import { ConfigMockPlugin } from './mock'
 import { ConfigVisualizerConfig } from './visualizer'
 import { ConfigCompressPlugin } from './compress'
 import { ConfigPagesPlugin } from './pages'
-import { ConfigMarkDownPlugin } from './markdown'
 import { ConfigRestartPlugin } from './restart'
 import createSpritesmith from './spritesmith'
 import createLayouts from './layouts'
@@ -37,13 +35,9 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 		ConfigPagesPlugin(),
 		// 开启.gz压缩  rollup-plugin-gzip
 		ConfigCompressPlugin(),
-		//支持markdown
-		ConfigMarkDownPlugin(),
 		// 监听配置文件改动重启
 		ConfigRestartPlugin(),
 		createLayouts()
-		// 生产环境使用CDN
-		// importToCDNPRO()
 	]
 	// @vitejs/plugin-legacy
 	VITE_LEGACY && isBuild && vitePlugins.push(legacy())

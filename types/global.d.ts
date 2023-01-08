@@ -3,8 +3,6 @@ declare global {
 		VITE_GLOB_APP_TITLE?: string
 		VITE_LEGACY?: false
 	}
-	interface ViteEnv {
-
-	}
+	interface ViteEnv {}
 }
 export {}
