@@ -3,7 +3,7 @@
  * @description 封装plugins数组统一调用
  */
 import externalGlobals from 'rollup-plugin-external-globals'
-import type { Plugin } from 'vite'
+import { PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
@@ -24,7 +24,7 @@ import createLayouts from './layouts'
 
 export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 	const { VITE_LEGACY } = viteEnv
-	const vitePlugins: (Plugin | Plugin[])[] = [
+	const vitePlugins: (PluginOption | PluginOption[])[] = [
 		// vue支持
 		vue(),
 		// JSX支持
@@ -51,7 +51,7 @@ export function createVitePlugins(viteEnv: ViteEnvConfig, isBuild: boolean) {
 	vitePlugins.push(windiCSS())
 
 	// vite-plugin-html
-	vitePlugins.push(configHtmlPlugin(isBuild))
+	vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
 
 	// vite-plugin-svg-icons
 	vitePlugins.push(ConfigSvgIconsPlugin(isBuild))

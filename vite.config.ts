@@ -116,8 +116,8 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 			include: [
 				'vue',
 				'vue-router',
-				'vue-demi',
-				'pinia'
+				// 'vue-demi',
+				// 'pinia'
 				// '@vueuse/core'
 				// '@vueuse/head',
 			]
