@@ -14,7 +14,7 @@ module.exports = {
 		'selector-pseudo-class-no-unknown': [
 			true,
 			{
-				ignorePseudoClasses: ['global']
+				ignorePseudoClasses: ['global', 'deep']
 			}
 		],
 		'at-rule-no-unknown': [
@@ -27,7 +27,8 @@ module.exports = {
 					'apply',
 					'variants',
 					'responsive',
-					'theme'
+					'theme',
+					'tailwind'
 				]
 			}
 		],

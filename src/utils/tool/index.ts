@@ -1,3 +1,5 @@
+import path from 'path'
+
 /*
  * url 目标url
  * arg 需要替换的参数名称
@@ -26,4 +28,8 @@ export const changeURLArg = (url: string, arg: any, argVal: any) => {
 export const maskePhoneNumber = (tel: string) => {
 	const mystr = tel.substring(0, 4 - 1) + '****' + tel.substring(6 + 1)
 	return mystr
+}
+
+export function resolveRoutePath(basePath: string, routePath?: string) {
+	return basePath ? path.resolve(basePath, routePath ?? '') : routePath ?? ''
 }

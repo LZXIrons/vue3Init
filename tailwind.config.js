@@ -1,10 +1,9 @@
-import { defineConfig } from 'vite-plugin-windicss'
-// import { primaryColor } from './config/theme'
-
-export default defineConfig({
-	darkMode: 'class',
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
+			important: true,
 			zIndex: {
 				'-1': '-1'
 			},
@@ -25,5 +24,5 @@ export default defineConfig({
 			}
 		}
 	},
-	purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}']
-})
+	plugins: []
+}

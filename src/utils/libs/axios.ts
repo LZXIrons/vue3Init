@@ -7,7 +7,8 @@ import { TOKENID } from '@config/constant'
 import { ElLoading } from 'element-plus'
 import { formatTime } from '@/utils/methods/format'
 import MD5 from '@/utils/methods/md5'
-const API_BASE_URL = ''
+
+const API_BASE_URL = 'https://netease-cloud-music-api-liart-mu.vercel.app'
 // 请求列表(防重复提交)
 const pending = new Array<any>() //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 export class createAxios {
@@ -57,8 +58,8 @@ export class createAxios {
 					pending.push({ u: config.url + '&' + config.method, f: c })
 				})
 				config.headers = Object.assign({}, config.headers, {
-					reqTime,
-					sign: MD5(hash),
+					// reqTime,
+					// sign: MD5(hash),
 					'content-type': contentType
 				})
 				const tokenId = Cookies.get(TOKENID) || ''
@@ -134,29 +135,29 @@ export class createAxios {
 	}
 
 	get = <T>(
-		config: NewAxiosRequestConfig,
+		config?: NewAxiosRequestConfig,
 		options?: RequestOptions
 	): Promise<T> => {
 		return this.http({ ...config, method: 'GET' }, options)
 	}
 
 	post = <T>(
-		config: NewAxiosRequestConfig,
-		options: RequestOptions
+		config?: NewAxiosRequestConfig,
+		options?: RequestOptions
 	): Promise<T> => {
 		return this.http({ ...config, method: 'POST' }, options)
 	}
 
 	put = <T>(
-		config: NewAxiosRequestConfig,
-		options: RequestOptions
+		config?: NewAxiosRequestConfig,
+		options?: RequestOptions
 	): Promise<T> => {
 		return this.http({ ...config, method: 'PUT' }, options)
 	}
 
 	delete = <T>(
-		config: NewAxiosRequestConfig,
-		options: RequestOptions
+		config?: NewAxiosRequestConfig,
+		options?: RequestOptions
 	): Promise<T> => {
 		return this.http({ ...config, method: 'DELETE' }, options)
 	}

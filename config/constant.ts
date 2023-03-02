@@ -58,3 +58,6 @@ export const CDN = {
 	],
 	css: ['https://cdn.jsdelivr.net/npm/element-plus/dist/index.css']
 }
+export const proxyRigUrl = '/api'
+//网易云
+export const proxyMcUrl = '/MCapi'

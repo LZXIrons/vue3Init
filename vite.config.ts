@@ -13,7 +13,7 @@ function resovePath(paths: string) {
 export default defineConfig(({ command, mode }: ConfigEnv) => {
 	const ViteEnv: ViteEnvConfig = loadEnv(mode, __dirname)
 	const isBuild = command === 'build'
-	console.log('ViteEnv.VITE_APP_RIG_API', ViteEnv)
+	console.log('ViteEnv.VITE_MC_API', ViteEnv)
 	console.log('isBuild', isBuild)
 	return {
 		server: {
@@ -21,27 +21,16 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 			// open: true, // 是否打开浏览器
 			port: 3001,
 			proxy: {
-				'/zhongzhengapi/rigPortal/': {
-					target: ViteEnv.VITE_APP_RIG_API,
-					changeOrigin: true,
-					rewrite: path =>
-						path.replace(/^\/zhongzhengapi\/rigPortal\//, '/rigPortal/')
-				},
-				'/mjwatchapi/rigPortal/': {
-					target: ViteEnv.VITE_APP_RIG_API,
-					changeOrigin: true,
-					rewrite: path =>
-						path.replace(/^\/mjwatchapi\/rigPortal\//, '/rigPortal/')
-				},
-				'/zhongzhengapi/manageapi/': {
-					target: ViteEnv.VITE_APP_MANAGE_API,
-					changeOrigin: true,
-					rewrite: path => path.replace(/^\/zhongzhengapi\/manageapi\//, '')
-				},
 				'^/api': {
 					target: ViteEnv.VITE_APP_API,
 					changeOrigin: true,
 					rewrite: path => path.replace(/^\/api/, '/pw-weapp-api')
+				},
+				'^/MCapi': {
+					target: ViteEnv.VITE_MC_API,
+					secure: false,
+					changeOrigin: true,
+					rewrite: path => path.replace(/^\/MCapi/, '')
 				}
 			}
 		},
@@ -50,10 +39,10 @@ export default defineConfig(({ command, mode }: ConfigEnv) => {
 			// 定义别名
 			alias: {
 				'@': resovePath('src'),
-				'@components': resovePath('src/components'),
-				'@config': resovePath('config/'),
-				'@utils': resovePath('src/utils'),
-				'@http': resovePath('src/http')
+				'@config': resovePath('config/')
+				// '@components': resovePath('src/components'),
+				// '@utils': resovePath('src/utils'),
+				// '@http': resovePath('src/http')
 			}
 		},
 		css: {

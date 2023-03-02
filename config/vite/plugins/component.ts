@@ -10,10 +10,10 @@ import {
 
 export const AutoRegistryComponents = () => {
 	return Components({
-		dirs: ['src/components'],
+		dirs: ['src/components', 'src/layout/components'],
 		extensions: ['vue', 'md'],
 		deep: true,
-		dts: 'src/components.d.ts',
+		dts: 'types/components.d.ts',
 		directoryAsNamespace: false,
 		globalNamespaces: [],
 		directives: true,

@@ -1,19 +1,17 @@
 <route lang="yaml">
-meta:
-  layout: home
+path: '/'
+alias: '/home'
 </route>
 <template>
-	<div
-		class="text-red-400 home dark:text-green-400 flex justify-center items-center"
-	>
-		<button @click="goabout">{{ title }}</button>
-		<button @click="handleShow">接口请求</button>
-		<!-- <button @click="toggleTheme">样式切换</button> -->
+	<div class="flex">
+		<div class="w-3/12">lp</div>
+		<div class="w-9/12">rp</div>
+		<div @click="goabout"></div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { findGoodsDetail } from '@http/test'
+import { findGoodsDetail } from '@/http/demo/api'
 
 import { testStore } from '@/store/pinia'
 import { useRouter } from 'vue-router'
@@ -63,9 +61,8 @@ onMounted(() => {
 	const obj = reactive({ count })
 	const obj1 = reactive({ a: 1 })
 	const obj2 = ref(obj1)
-
+	handleShow()
 	console.log(count.value, obj, 'obj2=', obj2.value)
-	init()
 })
 </script>
 <style lang="less">

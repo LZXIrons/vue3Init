@@ -1,5 +1,5 @@
 <template>
-	<div>默认页</div>
+	<div>discover</div>
 </template>
 <script lang="ts" setup></script>
 <style lang="scss" scoped></style>

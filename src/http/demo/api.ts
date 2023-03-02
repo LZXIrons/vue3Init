@@ -1,9 +1,7 @@
 import { defHttp } from '@/utils/libs/axios'
 
 // import wxRequest from '../utils/wxRequest.js'
-// import { proxyRigUrl } from '@config/constant'
-// const proxyRigUrl = '/zhongzhengapi/rigPortal'
-const proxyRigUrl = '/api'
+import { proxyRigUrl } from '@config/constant'
 //区域接口
 export const findGoodsDetail = params =>
 	defHttp.post(
